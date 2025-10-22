@@ -15,6 +15,7 @@ import Ideas from "./pages/Ideas";
 import IdeaDetail from "./pages/IdeaDetail";
 import ExecutorOpportunities from "./pages/ExecutorOpportunities";
 import ExecutorOpportunityDetail from "./pages/ExecutorOpportunityDetail";
+import ExecutorActive from "./pages/ExecutorActive";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/ideas/:id" element={<IdeaDetail />} />
           <Route path="/executor/opportunities" element={<ExecutorOpportunities />} />
           <Route path="/executor/opportunities/:id" element={<ExecutorOpportunityDetail />} />
+          <Route path="/executor/active" element={<ExecutorActive />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

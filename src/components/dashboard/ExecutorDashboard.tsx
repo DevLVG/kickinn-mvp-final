@@ -63,21 +63,51 @@ const ExecutorDashboard = ({ user }: ExecutorDashboardProps) => {
   const activeProjects = [
     {
       id: "1",
-      ventureTitle: "ThreadCycle - Sustainable Fashion Platform",
+      ventureId: "v1",
+      ventureName: "ThreadCycle - Sustainable Fashion Platform",
       role: "Frontend Developer",
-      currentMilestone: "Design Implementation",
-      progress: 60,
-      deadline: "5 days",
-      tokensAllocated: 13000
+      status: 'on_track' as const,
+      overallProgress: 60,
+      milestones: [
+        {
+          id: 'm1',
+          title: 'Design Implementation',
+          status: 'in_progress' as const,
+          deadline: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
+          progress: 60,
+        },
+      ],
+      team: [
+        { id: 't1', name: 'Sarah Chen', role: 'Product Manager', avatar: '' },
+      ],
+      tokensAllocated: 13000,
+      unreadMessages: 0,
+      daysToDeadline: 5,
+      contractSigned: true,
     },
     {
       id: "2",
-      ventureTitle: "CarbonTrack - Carbon Footprint Tracker",
+      ventureId: "v2",
+      ventureName: "CarbonTrack - Carbon Footprint Tracker",
       role: "Mobile Developer",
-      currentMilestone: "API Integration",
-      progress: 35,
-      deadline: "2 days",
-      tokensAllocated: 15000
+      status: 'at_risk' as const,
+      overallProgress: 35,
+      milestones: [
+        {
+          id: 'm2',
+          title: 'API Integration',
+          status: 'in_progress' as const,
+          deadline: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(),
+          progress: 35,
+        },
+      ],
+      team: [
+        { id: 't2', name: 'John Doe', role: 'Backend Developer', avatar: '' },
+      ],
+      tokensAllocated: 15000,
+      unreadMessages: 2,
+      daysToDeadline: 2,
+      contractSigned: true,
     }
   ];
 
