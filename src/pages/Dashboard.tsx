@@ -4,6 +4,9 @@ import { supabase } from '@/integrations/supabase/client';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import IdeatorDashboard from '@/components/dashboard/IdeatorDashboard';
+import ExecutorDashboard from '@/components/dashboard/ExecutorDashboard';
+import InvestorDashboard from '@/components/dashboard/InvestorDashboard';
+import BuyerDashboard from '@/components/dashboard/BuyerDashboard';
 
 interface UserRole {
   role: string;
@@ -93,11 +96,11 @@ const Dashboard = () => {
       case 'ideator':
         return <IdeatorDashboard user={user} />;
       case 'executor':
-        return <div className="text-center py-12">Executor Dashboard (Coming Soon)</div>;
+        return <ExecutorDashboard user={user} />;
       case 'investor':
-        return <div className="text-center py-12">Investor Dashboard (Coming Soon)</div>;
+        return <InvestorDashboard user={user} />;
       case 'buyer':
-        return <div className="text-center py-12">Buyer Dashboard (Coming Soon)</div>;
+        return <BuyerDashboard user={user} />;
       default:
         return <IdeatorDashboard user={user} />;
     }
