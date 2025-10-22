@@ -11,6 +11,7 @@ import RegisterStepThree from "./pages/RegisterStepThree";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import SubmitIdea from "./pages/SubmitIdea";
+import Ideas from "./pages/Ideas";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
@@ -38,6 +39,7 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/submit-idea" element={<SubmitIdea />} />
+          <Route path="/ideas" element={<Ideas />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
