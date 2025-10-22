@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import FeatureCard from "@/components/FeatureCard";
 import RoleCard from "@/components/RoleCard";
 import ProcessStep from "@/components/ProcessStep";
@@ -13,14 +14,14 @@ const Index = () => {
       <section 
         className="min-h-screen px-8 md:px-16 py-12 relative overflow-hidden"
         style={{
-          background: 'linear-gradient(135deg, hsl(199, 55%, 14%) 0%, hsl(199, 55%, 24%) 50%, hsl(199, 55%, 14%) 100%)',
+          background: 'linear-gradient(135deg, #0f2b38 0%, #194a61 50%, #0f2b38 100%)',
         }}
       >
         {/* Radial accent overlay */}
         <div 
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: 'radial-gradient(circle at 30% 50%, hsla(150, 25%, 52%, 0.15), transparent 50%)'
+            background: 'radial-gradient(circle at 30% 50%, rgba(103, 159, 131, 0.15), transparent 50%)'
           }}
         />
         
@@ -28,61 +29,53 @@ const Index = () => {
         <div 
           className="absolute inset-0 pointer-events-none opacity-5"
           style={{
-            backgroundImage: `linear-gradient(hsl(150, 25%, 52%) 1px, transparent 1px),
-                             linear-gradient(90deg, hsl(150, 25%, 52%) 1px, transparent 1px)`,
+            backgroundImage: `linear-gradient(#679f83 1px, transparent 1px),
+                             linear-gradient(90deg, #679f83 1px, transparent 1px)`,
             backgroundSize: '50px 50px'
           }}
         />
         
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Logo with glow effect */}
+          {/* Logo with glow effect - clickable */}
           <div className="mb-16 md:mb-20">
-            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-wider" style={{ textShadow: '0 0 30px hsla(150, 25%, 52%, 0.5)' }}>
-              KICK INN
-            </h2>
+            <Link to="/">
+              <h2 
+                className="text-2xl md:text-3xl font-bold text-white tracking-wider cursor-pointer hover:opacity-90 transition-opacity inline-block" 
+                style={{ textShadow: '0 0 30px rgba(103, 159, 131, 0.5)' }}
+              >
+                KICK INN
+              </h2>
+            </Link>
           </div>
           
           {/* Hero Grid */}
           <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             {/* Left Column */}
             <div className="space-y-6 md:space-y-8">
-              <div className="inline-block px-4 py-2 bg-secondary-teal/10 backdrop-blur-sm border border-secondary-teal/20 rounded-full mb-4">
-                <span className="text-secondary-teal text-sm font-medium">🚀 Blockchain-Powered Ventures</span>
-              </div>
-              <h1 className="text-4xl md:text-[56px] lg:text-[64px] font-bold text-white leading-tight" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}>
+              <h1 className="text-4xl md:text-[56px] font-bold text-white leading-tight" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}>
                 Where Ideas <span className="bg-gradient-primary bg-clip-text text-transparent">Kick In</span>
               </h1>
-              <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-lg">
+              <p className="text-lg text-white/80 leading-relaxed max-w-lg">
                 From problem to prototype. From insight to investability.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button 
-                  className="bg-gradient-primary text-white px-8 py-6 rounded-xl text-base font-medium hover:-translate-y-1 hover:shadow-[0_12px_40px_hsla(150,25%,52%,0.5)] transition-all duration-300"
-                  style={{ boxShadow: '0 8px 24px hsla(150, 25%, 52%, 0.3)' }}
-                >
-                  Explore Platform
-                </Button>
-                <Button 
-                  className="bg-white/5 backdrop-blur-sm border-2 border-white/20 text-white px-8 py-6 rounded-xl text-base font-medium hover:bg-white/10 hover:-translate-y-1 transition-all duration-300"
-                >
-                  Watch Demo
-                </Button>
-              </div>
-              
-              {/* Quick stats */}
-              <div className="flex gap-8 pt-8">
-                <div>
-                  <div className="text-2xl md:text-3xl font-bold text-secondary-teal">78%</div>
-                  <div className="text-sm text-white/60">Success Rate</div>
-                </div>
-                <div>
-                  <div className="text-2xl md:text-3xl font-bold text-secondary-teal">$250K</div>
-                  <div className="text-sm text-white/60">Avg Funding</div>
-                </div>
-                <div>
-                  <div className="text-2xl md:text-3xl font-bold text-secondary-teal">9.9K+</div>
-                  <div className="text-sm text-white/60">Members</div>
-                </div>
+              <div className="pt-4">
+                <Link to="/register">
+                  <Button 
+                    className="px-8 py-6 rounded-lg text-base font-medium transition-all duration-300"
+                    style={{ 
+                      background: 'linear-gradient(to right, #679f83, #23698a)',
+                      boxShadow: '0 8px 24px rgba(103, 159, 131, 0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                  >
+                    Explore Platform
+                  </Button>
+                </Link>
               </div>
             </div>
             
@@ -97,20 +90,13 @@ const Index = () => {
       {/* Section 2: What is Kick Inn */}
       <section 
         className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
-        style={{ background: 'hsla(199, 55%, 14%, 0.5)' }}
+        style={{ background: 'rgba(15, 43, 56, 0.5)' }}
       >
-        {/* Background accent */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary-teal/5 rounded-full blur-[100px] pointer-events-none" />
-        
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="inline-block px-5 py-2 bg-secondary-teal/10 backdrop-blur-sm border border-secondary-teal/20 rounded-full mb-6 mx-auto block w-fit">
-            <span className="text-secondary-teal text-sm font-medium">💡 The Platform</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6">
-            A Virtual Incubator <br className="hidden md:block" />
-            <span className="bg-gradient-primary bg-clip-text text-transparent">Without Founders</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-4">
+            A Virtual Incubator <span className="bg-gradient-primary bg-clip-text text-transparent">Without Founders</span>
           </h2>
-          <p className="text-lg md:text-xl text-white/70 text-center max-w-[800px] mx-auto mb-20 leading-relaxed">
+          <p className="text-lg text-white/70 text-center max-w-[700px] mx-auto mb-20 leading-relaxed">
             Kick Inn is a founderless, modular venture engine. It turns real-world insights into investable, exit-ready startups through AI orchestration, Executor networks, and tokenized capital.
           </p>
           
@@ -137,21 +123,12 @@ const Index = () => {
       {/* Section 3: Community Pillars */}
       <section 
         className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
-        style={{ background: 'hsla(199, 55%, 24%, 0.5)' }}
+        style={{ background: 'rgba(25, 74, 97, 0.5)' }}
       >
-        {/* Background accent */}
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-blue/5 rounded-full blur-[100px] pointer-events-none" />
-        
         <div className="max-w-7xl mx-auto relative z-10">
-          <div className="inline-block px-5 py-2 bg-secondary-teal/10 backdrop-blur-sm border border-secondary-teal/20 rounded-full mb-6 mx-auto block w-fit">
-            <span className="text-secondary-teal text-sm font-medium">👥 Community</span>
-          </div>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4">
-            Our Community <span className="bg-gradient-primary bg-clip-text text-transparent">Pillars</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-20">
+            Our Community Pillars
           </h2>
-          <p className="text-lg text-white/70 text-center max-w-[600px] mx-auto mb-20">
-            Four distinct roles working together to turn ideas into successful ventures
-          </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <RoleCard
@@ -185,7 +162,7 @@ const Index = () => {
       {/* Section 4: How It Works */}
       <section 
         className="px-8 md:px-16 py-24"
-        style={{ background: 'hsla(199, 55%, 14%, 0.6)' }}
+        style={{ background: 'rgba(15, 43, 56, 0.6)' }}
       >
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-20">
@@ -236,14 +213,14 @@ const Index = () => {
       {/* Section 6: CTA Final */}
       <section 
         className="px-8 md:px-16 py-24"
-        style={{ background: 'hsla(150, 25%, 52%, 0.12)' }}
+        style={{ background: 'rgba(103, 159, 131, 0.12)' }}
       >
         <div className="max-w-7xl mx-auto">
           <div 
-            className="max-w-4xl mx-auto rounded-3xl p-12 md:p-20 backdrop-blur-md"
+            className="max-w-[900px] mx-auto rounded-3xl p-12 md:p-20 backdrop-blur-md"
             style={{
-              background: 'hsla(150, 25%, 52%, 0.15)',
-              border: '1px solid hsla(150, 25%, 52%, 0.3)'
+              background: 'rgba(103, 159, 131, 0.15)',
+              border: '1px solid rgba(103, 159, 131, 0.3)'
             }}
           >
             <h2 className="text-3xl md:text-[44px] font-bold text-white text-center mb-6 leading-tight">
@@ -254,18 +231,70 @@ const Index = () => {
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
-              <Button className="bg-primary-dark hover:bg-accent-blue text-white px-8 py-6 rounded-lg text-base font-medium transition-all duration-300 hover:-translate-y-0.5">
-                Submit an Idea
-              </Button>
-              <Button className="bg-secondary-teal hover:bg-light-teal text-white px-8 py-6 rounded-lg text-base font-medium transition-all duration-300 hover:-translate-y-0.5">
-                Join as Executor
-              </Button>
-              <Button className="bg-accent-blue hover:opacity-90 text-white px-8 py-6 rounded-lg text-base font-medium transition-all duration-300 hover:-translate-y-0.5">
-                Explore Deals
-              </Button>
-              <Button className="bg-light-teal hover:bg-secondary-teal text-dark-navy px-8 py-6 rounded-lg text-base font-medium transition-all duration-300 hover:-translate-y-0.5">
-                Buy Your App
-              </Button>
+              <Link to="/register?role=ideator">
+                <Button 
+                  className="px-8 py-6 rounded-lg text-base font-medium text-white transition-all duration-300"
+                  style={{ background: '#194a61' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#23698a';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#194a61';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  Submit an Idea
+                </Button>
+              </Link>
+              <Link to="/register?role=executor">
+                <Button 
+                  className="px-8 py-6 rounded-lg text-base font-medium text-white transition-all duration-300"
+                  style={{ background: '#679f83' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#86b39c';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#679f83';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  Join as Executor
+                </Button>
+              </Link>
+              <Link to="/register?role=investor">
+                <Button 
+                  className="px-8 py-6 rounded-lg text-base font-medium text-white transition-all duration-300"
+                  style={{ background: '#23698a' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.opacity = '0.9';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.opacity = '1';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  Explore Deals
+                </Button>
+              </Link>
+              <Link to="/register?role=buyer">
+                <Button 
+                  className="px-8 py-6 rounded-lg text-base font-medium transition-all duration-300"
+                  style={{ background: '#86b39c', color: '#0f2b38' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = '#679f83';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = '#86b39c';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  Buy Your App
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -275,42 +304,42 @@ const Index = () => {
       <footer 
         className="px-8 md:px-16 py-16"
         style={{ 
-          background: 'hsl(199, 55%, 14%)',
-          borderTop: '1px solid hsla(255, 255%, 255%, 0.1)'
+          background: '#0f2b38',
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)'
         }}
       >
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Links */}
             <div className="flex flex-wrap gap-2 text-sm text-white/70">
-              <a href="#" className="hover:text-white transition-colors">Product</a>
+              <Link to="/documentation" className="hover:text-white hover:opacity-100 transition-colors">Product</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white transition-colors">Pricing</a>
+              <Link to="/pricing" className="hover:text-white hover:opacity-100 transition-colors">Pricing</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white transition-colors">About Us</a>
+              <Link to="/about" className="hover:text-white hover:opacity-100 transition-colors">About Us</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white transition-colors">Contact</a>
+              <Link to="/contact" className="hover:text-white hover:opacity-100 transition-colors">Contact</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white transition-colors">Resources</a>
+              <Link to="/documentation" className="hover:text-white hover:opacity-100 transition-colors">Resources</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white transition-colors">Blog</a>
+              <Link to="/blog" className="hover:text-white hover:opacity-100 transition-colors">Blog</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white transition-colors">Help Center</a>
+              <Link to="/help" className="hover:text-white hover:opacity-100 transition-colors">Help Center</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+              <Link to="/terms" className="hover:text-white hover:opacity-100 transition-colors">Terms of Service</Link>
               <span>|</span>
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+              <Link to="/privacy" className="hover:text-white hover:opacity-100 transition-colors">Privacy Policy</Link>
             </div>
             
             {/* Social Icons */}
             <div className="flex gap-6 justify-start md:justify-end">
-              <a href="#" className="text-white/70 hover:text-white transition-colors">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white hover:opacity-100 transition-colors">
                 <Twitter className="w-6 h-6" />
               </a>
-              <a href="#" className="text-white/70 hover:text-white transition-colors">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white hover:opacity-100 transition-colors">
                 <Linkedin className="w-6 h-6" />
               </a>
-              <a href="#" className="text-white/70 hover:text-white transition-colors">
+              <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-white hover:opacity-100 transition-colors">
                 <Send className="w-6 h-6" />
               </a>
             </div>
