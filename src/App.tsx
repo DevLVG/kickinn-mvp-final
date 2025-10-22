@@ -21,6 +21,7 @@ import ExecutorContractDetail from "./pages/ExecutorContractDetail";
 import VentureWorkspace from "./pages/VentureWorkspace";
 import Deals from "./pages/Deals";
 import DealDetail from "./pages/DealDetail";
+import Portfolio from "./pages/Portfolio";
 import ComingSoon from "./pages/ComingSoon";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
@@ -59,10 +60,10 @@ const App = () => (
           <Route path="/ventures/:id" element={<VentureWorkspace />} />
           <Route path="/deals" element={<Deals />} />
           <Route path="/deals/:id" element={<DealDetail />} />
+          <Route path="/portfolio" element={<Portfolio />} />
           
           {/* Placeholder routes - Coming Soon */}
           <Route path="/ventures" element={<ComingSoon />} />
-          <Route path="/portfolio" element={<ComingSoon />} />
           <Route path="/executor/earnings" element={<ComingSoon />} />
           <Route path="/executor/reputation" element={<ComingSoon />} />
           <Route path="/exits" element={<ComingSoon />} />
