@@ -19,6 +19,7 @@ import ExecutorActive from "./pages/ExecutorActive";
 import ExecutorContracts from "./pages/ExecutorContracts";
 import ExecutorContractDetail from "./pages/ExecutorContractDetail";
 import VentureWorkspace from "./pages/VentureWorkspace";
+import Deals from "./pages/Deals";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
@@ -54,6 +55,7 @@ const App = () => (
           <Route path="/executor/contracts" element={<ExecutorContracts />} />
           <Route path="/executor/contracts/:id" element={<ExecutorContractDetail />} />
           <Route path="/ventures/:id" element={<VentureWorkspace />} />
+          <Route path="/deals" element={<Deals />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
