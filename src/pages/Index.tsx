@@ -24,32 +24,70 @@ const Index = () => {
           }}
         />
         
+        {/* Decorative grid pattern */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-5"
+          style={{
+            backgroundImage: `linear-gradient(hsl(150, 25%, 52%) 1px, transparent 1px),
+                             linear-gradient(90deg, hsl(150, 25%, 52%) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px'
+          }}
+        />
+        
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Logo */}
-          <div className="mb-20">
-            <h2 className="text-2xl font-bold text-white">KICK INN</h2>
+          {/* Logo with glow effect */}
+          <div className="mb-16 md:mb-20">
+            <h2 className="text-2xl md:text-3xl font-bold text-white tracking-wider" style={{ textShadow: '0 0 30px hsla(150, 25%, 52%, 0.5)' }}>
+              KICK INN
+            </h2>
           </div>
           
           {/* Hero Grid */}
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
             {/* Left Column */}
-            <div className="space-y-8">
-              <h1 className="text-4xl md:text-[56px] font-bold text-white leading-tight">
-                Where Ideas Kick In
+            <div className="space-y-6 md:space-y-8">
+              <div className="inline-block px-4 py-2 bg-secondary-teal/10 backdrop-blur-sm border border-secondary-teal/20 rounded-full mb-4">
+                <span className="text-secondary-teal text-sm font-medium">🚀 Blockchain-Powered Ventures</span>
+              </div>
+              <h1 className="text-4xl md:text-[56px] lg:text-[64px] font-bold text-white leading-tight" style={{ textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}>
+                Where Ideas <span className="bg-gradient-primary bg-clip-text text-transparent">Kick In</span>
               </h1>
-              <p className="text-lg md:text-xl text-white/80 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/80 leading-relaxed max-w-lg">
                 From problem to prototype. From insight to investability.
               </p>
-              <Button 
-                className="bg-gradient-primary text-white px-8 py-6 rounded-lg text-base font-medium hover:-translate-y-0.5 transition-all duration-300"
-                style={{ boxShadow: '0 8px 24px hsla(150, 25%, 52%, 0.3)' }}
-              >
-                Explore Platform
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <Button 
+                  className="bg-gradient-primary text-white px-8 py-6 rounded-xl text-base font-medium hover:-translate-y-1 hover:shadow-[0_12px_40px_hsla(150,25%,52%,0.5)] transition-all duration-300"
+                  style={{ boxShadow: '0 8px 24px hsla(150, 25%, 52%, 0.3)' }}
+                >
+                  Explore Platform
+                </Button>
+                <Button 
+                  className="bg-white/5 backdrop-blur-sm border-2 border-white/20 text-white px-8 py-6 rounded-xl text-base font-medium hover:bg-white/10 hover:-translate-y-1 transition-all duration-300"
+                >
+                  Watch Demo
+                </Button>
+              </div>
+              
+              {/* Quick stats */}
+              <div className="flex gap-8 pt-8">
+                <div>
+                  <div className="text-2xl md:text-3xl font-bold text-secondary-teal">78%</div>
+                  <div className="text-sm text-white/60">Success Rate</div>
+                </div>
+                <div>
+                  <div className="text-2xl md:text-3xl font-bold text-secondary-teal">$250K</div>
+                  <div className="text-sm text-white/60">Avg Funding</div>
+                </div>
+                <div>
+                  <div className="text-2xl md:text-3xl font-bold text-secondary-teal">9.9K+</div>
+                  <div className="text-sm text-white/60">Members</div>
+                </div>
+              </div>
             </div>
             
             {/* Right Column */}
-            <div>
+            <div className="flex justify-center md:justify-end">
               <HeroVisual />
             </div>
           </div>
@@ -58,14 +96,21 @@ const Index = () => {
 
       {/* Section 2: What is Kick Inn */}
       <section 
-        className="px-8 md:px-16 py-24"
+        className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
         style={{ background: 'hsla(199, 55%, 14%, 0.5)' }}
       >
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-4">
-            A Virtual Incubator Without Founders
+        {/* Background accent */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary-teal/5 rounded-full blur-[100px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="inline-block px-5 py-2 bg-secondary-teal/10 backdrop-blur-sm border border-secondary-teal/20 rounded-full mb-6 mx-auto block w-fit">
+            <span className="text-secondary-teal text-sm font-medium">💡 The Platform</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-6">
+            A Virtual Incubator <br className="hidden md:block" />
+            <span className="bg-gradient-primary bg-clip-text text-transparent">Without Founders</span>
           </h2>
-          <p className="text-lg text-white/70 text-center max-w-[700px] mx-auto mb-20 leading-relaxed">
+          <p className="text-lg md:text-xl text-white/70 text-center max-w-[800px] mx-auto mb-20 leading-relaxed">
             Kick Inn is a founderless, modular venture engine. It turns real-world insights into investable, exit-ready startups through AI orchestration, Executor networks, and tokenized capital.
           </p>
           
@@ -91,13 +136,22 @@ const Index = () => {
 
       {/* Section 3: Community Pillars */}
       <section 
-        className="px-8 md:px-16 py-24"
+        className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
         style={{ background: 'hsla(199, 55%, 24%, 0.5)' }}
       >
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-20">
-            Our Community Pillars
+        {/* Background accent */}
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-blue/5 rounded-full blur-[100px] pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="inline-block px-5 py-2 bg-secondary-teal/10 backdrop-blur-sm border border-secondary-teal/20 rounded-full mb-6 mx-auto block w-fit">
+            <span className="text-secondary-teal text-sm font-medium">👥 Community</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white text-center mb-4">
+            Our Community <span className="bg-gradient-primary bg-clip-text text-transparent">Pillars</span>
           </h2>
+          <p className="text-lg text-white/70 text-center max-w-[600px] mx-auto mb-20">
+            Four distinct roles working together to turn ideas into successful ventures
+          </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <RoleCard
