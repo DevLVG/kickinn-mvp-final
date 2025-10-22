@@ -23,6 +23,7 @@ import Deals from "./pages/Deals";
 import DealDetail from "./pages/DealDetail";
 import Portfolio from "./pages/Portfolio";
 import VentureDetail from "./pages/VentureDetail";
+import ExitRedemption from "./pages/ExitRedemption";
 import ComingSoon from "./pages/ComingSoon";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
@@ -62,7 +63,8 @@ const App = () => (
           <Route path="/deals" element={<Deals />} />
           <Route path="/deals/:id" element={<DealDetail />} />
           <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/portfolio/:venture_id" element={<VentureDetail />} />
+        <Route path="/portfolio/:venture_id" element={<VentureDetail />} />
+        <Route path="/portfolio/:venture_id/exit" element={<ExitRedemption />} />
           
           {/* Placeholder routes - Coming Soon */}
           <Route path="/ventures" element={<ComingSoon />} />
