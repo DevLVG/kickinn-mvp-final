@@ -27,6 +27,7 @@ import ExitRedemption from "./pages/ExitRedemption";
 import TokenDetail from "./pages/TokenDetail";
 import Exits from "./pages/Exits";
 import ExitDealDetail from "./pages/ExitDealDetail";
+import MakeOffer from "./pages/MakeOffer";
 import ComingSoon from "./pages/ComingSoon";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
@@ -76,6 +77,7 @@ const App = () => (
           <Route path="/executor/reputation" element={<ComingSoon />} />
           <Route path="/exits" element={<Exits />} />
           <Route path="/exits/:id" element={<ExitDealDetail />} />
+          <Route path="/exits/:id/offer" element={<MakeOffer />} />
           <Route path="/buyer/offers" element={<ComingSoon />} />
           <Route path="/buyer/acquired" element={<ComingSoon />} />
           <Route path="/documentation" element={<ComingSoon />} />
