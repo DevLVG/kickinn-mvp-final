@@ -31,7 +31,7 @@ const ExitDealDetail = () => {
     email: "buyer@example.com",
     initials: "JB",
     role: 'buyer' as const,
-    kyc_status: 'pending' as const,
+    kyc_status: 'pending' as 'pending' | 'verified' | 'rejected',
     wallet_connected: false
   };
 
