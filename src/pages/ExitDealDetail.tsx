@@ -22,7 +22,7 @@ const ExitDealDetail = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<TabType>('overview');
   const [showKYCModal, setShowKYCModal] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Mock user data - in production, get from auth context
   const user = {
@@ -71,10 +71,10 @@ const ExitDealDetail = () => {
     }
   };
 
-  useEffect(() => {
-    // Simulate API call
-    setTimeout(() => setIsLoading(false), 1000);
-  }, [id]);
+  // In production, fetch data here
+  // useEffect(() => {
+  //   fetchVentureData(id).then(() => setIsLoading(false));
+  // }, [id]);
 
   const handleMakeOffer = () => {
     if (user.kyc_status === 'verified') {
