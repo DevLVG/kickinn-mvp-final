@@ -20,6 +20,10 @@ import ExecutorContracts from "./pages/ExecutorContracts";
 import ExecutorContractDetail from "./pages/ExecutorContractDetail";
 import ExecutorEarnings from "./pages/ExecutorEarnings";
 import ExecutorReputation from "./pages/ExecutorReputation";
+import About from "./pages/About";
+import Documentation from "./pages/Documentation";
+import Contact from "./pages/Contact";
+import HelpCenter from "./pages/HelpCenter";
 import VentureWorkspace from "./pages/VentureWorkspace";
 import Deals from "./pages/Deals";
 import DealDetail from "./pages/DealDetail";
@@ -31,8 +35,8 @@ import Exits from "./pages/Exits";
 import ExitDealDetail from "./pages/ExitDealDetail";
 import MakeOffer from "./pages/MakeOffer";
 import ComingSoon from "./pages/ComingSoon";
-import Terms from "./pages/Terms";
-import Privacy from "./pages/Privacy";
+import Terms from "./pages/TermsOfService";
+import Privacy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -73,17 +77,26 @@ const App = () => (
         <Route path="/portfolio/:venture_id/exit" element={<ExitRedemption />} />
         <Route path="/tokens/:venture_id" element={<TokenDetail />} />
           
-          {/* Placeholder routes - Coming Soon */}
-          <Route path="/ventures" element={<ComingSoon />} />
+          {/* Executor Routes */}
           <Route path="/executor/earnings" element={<ExecutorEarnings />} />
           <Route path="/executor/reputation" element={<ExecutorReputation />} />
+          <Route path="/executor/marketplace" element={<ComingSoon />} />
+          
+          {/* Exit & Buyer Routes */}
           <Route path="/exits" element={<Exits />} />
           <Route path="/exits/:id" element={<ExitDealDetail />} />
           <Route path="/exits/:id/offer" element={<MakeOffer />} />
           <Route path="/buyer/offers" element={<ComingSoon />} />
           <Route path="/buyer/acquired" element={<ComingSoon />} />
-          <Route path="/documentation" element={<ComingSoon />} />
-          <Route path="/contact" element={<ComingSoon />} />
+          
+          {/* Static Pages */}
+          <Route path="/about" element={<About />} />
+          <Route path="/documentation" element={<Documentation />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/help" element={<HelpCenter />} />
+          
+          {/* Coming Soon */}
+          <Route path="/ventures" element={<ComingSoon />} />
           
           <Route path="/terms" element={<Terms />} />
           <Route path="/privacy" element={<Privacy />} />
