@@ -14,6 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
+      idea_clarifications: {
+        Row: {
+          answers: Json | null
+          created_at: string
+          expires_at: string
+          id: string
+          idea_id: string
+          questions: Json
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          answers?: Json | null
+          created_at?: string
+          expires_at?: string
+          id?: string
+          idea_id: string
+          questions: Json
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          answers?: Json | null
+          created_at?: string
+          expires_at?: string
+          id?: string
+          idea_id?: string
+          questions?: Json
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
