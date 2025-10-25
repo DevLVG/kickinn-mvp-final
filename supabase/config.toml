@@ -8,3 +8,6 @@ verify_jwt = true
 
 [functions.calculate-fit-score]
 verify_jwt = true
+
+[functions.process-investment]
+verify_jwt = true

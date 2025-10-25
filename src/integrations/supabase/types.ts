@@ -98,6 +98,95 @@ export type Database = {
         }
         Relationships: []
       }
+      investment_logs: {
+        Row: {
+          action: string
+          created_at: string
+          details: Json | null
+          id: string
+          investment_id: string
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          details?: Json | null
+          id?: string
+          investment_id: string
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          details?: Json | null
+          id?: string
+          investment_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "investment_logs_investment_id_fkey"
+            columns: ["investment_id"]
+            isOneToOne: false
+            referencedRelation: "investments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      investments: {
+        Row: {
+          amount_usdt: number
+          completed_at: string | null
+          created_at: string
+          deal_id: string
+          id: string
+          investor_id: string
+          kyc_verified: boolean
+          status: string
+          terms_accepted: boolean
+          terms_accepted_at: string | null
+          token_price: number
+          tokens_received: number
+          transaction_hash: string | null
+          updated_at: string
+          venture_id: string
+          wallet_address: string
+        }
+        Insert: {
+          amount_usdt: number
+          completed_at?: string | null
+          created_at?: string
+          deal_id: string
+          id?: string
+          investor_id: string
+          kyc_verified?: boolean
+          status?: string
+          terms_accepted?: boolean
+          terms_accepted_at?: string | null
+          token_price: number
+          tokens_received: number
+          transaction_hash?: string | null
+          updated_at?: string
+          venture_id: string
+          wallet_address: string
+        }
+        Update: {
+          amount_usdt?: number
+          completed_at?: string | null
+          created_at?: string
+          deal_id?: string
+          id?: string
+          investor_id?: string
+          kyc_verified?: boolean
+          status?: string
+          terms_accepted?: boolean
+          terms_accepted_at?: string | null
+          token_price?: number
+          tokens_received?: number
+          transaction_hash?: string | null
+          updated_at?: string
+          venture_id?: string
+          wallet_address?: string
+        }
+        Relationships: []
+      }
       opportunity_fit_scores: {
         Row: {
           created_at: string
