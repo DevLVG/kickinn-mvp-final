@@ -72,7 +72,8 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-base md:text-lg text-white/85 leading-relaxed max-w-xl"
+                className="text-base md:text-lg leading-relaxed max-w-xl"
+                style={{ color: 'rgba(255, 255, 255, 0.9)' }}
               >
                 AI validates your concept. Executors build the MVP. Investors fund it. You keep equity.
               </motion.p>
@@ -98,7 +99,7 @@ const Index = () => {
                   >
                     <CheckCircle className="h-5 w-5 text-[#10b981] flex-shrink-0" />
                     <feature.icon className="h-5 w-5 text-[#679f83] flex-shrink-0" />
-                    <span className="text-white/90">{feature.text}</span>
+                    <span className="text-white/95">{feature.text}</span>
                   </motion.div>
                 ))}
               </motion.div>
@@ -183,8 +184,8 @@ const Index = () => {
               className="flex flex-col items-center text-center"
             >
               <CheckCircle className="h-10 w-10 text-[#10b981] mb-3" />
-              <div className="text-3xl font-bold text-white mb-1">2,400+</div>
-              <div className="text-white/80">Ideas Validated</div>
+              <div className="text-3xl font-bold mb-1" style={{ color: '#ffffff' }}>2,400+</div>
+              <div style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Ideas Validated</div>
             </motion.div>
             
             <motion.div
@@ -195,8 +196,8 @@ const Index = () => {
               className="flex flex-col items-center text-center"
             >
               <DollarSign className="h-10 w-10 text-[#679f83] mb-3" />
-              <div className="text-3xl font-bold text-white mb-1">$12M+</div>
-              <div className="text-white/80">Funded</div>
+              <div className="text-3xl font-bold mb-1" style={{ color: '#ffffff' }}>$12M+</div>
+              <div style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Funded</div>
             </motion.div>
             
             <motion.div
@@ -206,9 +207,9 @@ const Index = () => {
               transition={{ delay: 0.3 }}
               className="flex flex-col items-center text-center"
             >
-              <TrendingUp className="h-10 w-10 text-[#60a5fa] mb-3" />
-              <div className="text-3xl font-bold text-white mb-1">180</div>
-              <div className="text-white/80">Exits Completed</div>
+              <TrendingUp className="h-10 w-10 text-[#679f83] mb-3" />
+              <div className="text-3xl font-bold mb-1" style={{ color: '#ffffff' }}>180</div>
+              <div style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Exits Completed</div>
             </motion.div>
           </div>
         </div>
@@ -304,7 +305,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
               How Kick Inn Works
             </h2>
-            <p className="text-base md:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg max-w-2xl mx-auto leading-relaxed" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
               From idea to exit-ready venture in 4 automated stages
             </p>
           </motion.div>
@@ -313,7 +314,7 @@ const Index = () => {
           <div className="hidden lg:flex gap-8 mb-12 md:mb-16 relative">
             <ProcessStep
               icon={MessageSquarePlus}
-              iconColor="#14b8a6"
+              iconColor="#679f83"
               title="Submit Your Idea"
               description="Answer 5 questions. Our AI validates market fit in 48 hours."
               microStat="2.4K ideas submitted/month"
@@ -329,7 +330,7 @@ const Index = () => {
             />
             <ProcessStep
               icon={TrendingUp}
-              iconColor="#3b82f6"
+              iconColor="#679f83"
               title="Investors Back It"
               description="Liquid token deals with transparent terms. No pitch deck needed."
               microStat="$250K avg. seed round"
@@ -337,7 +338,7 @@ const Index = () => {
             />
             <ProcessStep
               icon={Target}
-              iconColor="#a855f7"
+              iconColor="#23698a"
               title="Buyers Acquire"
               description="Revenue-ready businesses with clear due diligence. Exit in 18mo avg."
               microStat="180 exits completed"
@@ -350,7 +351,7 @@ const Index = () => {
           <div className="lg:hidden space-y-6 md:space-y-8 mb-12 md:mb-16">
             <ProcessStep
               icon={MessageSquarePlus}
-              iconColor="#14b8a6"
+              iconColor="#679f83"
               title="Submit Your Idea"
               description="Answer 5 questions. Our AI validates market fit in 48 hours."
               microStat="2.4K ideas submitted/month"
@@ -368,7 +369,7 @@ const Index = () => {
             />
             <ProcessStep
               icon={TrendingUp}
-              iconColor="#3b82f6"
+              iconColor="#679f83"
               title="Investors Back It"
               description="Liquid token deals with transparent terms. No pitch deck needed."
               microStat="$250K avg. seed round"
@@ -377,7 +378,7 @@ const Index = () => {
             />
             <ProcessStep
               icon={Target}
-              iconColor="#a855f7"
+              iconColor="#23698a"
               title="Buyers Acquire"
               description="Revenue-ready businesses with clear due diligence. Exit in 18mo avg."
               microStat="180 exits completed"
@@ -412,7 +413,7 @@ const Index = () => {
                 Browse Opportunities
               </Button>
             </Link>
-            <Link to="/exits" className="text-white/80 hover:text-white transition-colors text-sm font-medium group mt-2 md:mt-0">
+            <Link to="/exits" className="text-sm font-medium group mt-2 md:mt-0" style={{ color: 'rgba(255, 255, 255, 0.85)' }}>
               See Exit Success Stories 
               <span className="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
             </Link>
