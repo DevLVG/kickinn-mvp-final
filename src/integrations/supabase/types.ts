@@ -14,6 +14,36 @@ export type Database = {
   }
   public: {
     Tables: {
+      chat_messages: {
+        Row: {
+          attachments: Json | null
+          content: string
+          created_at: string
+          id: string
+          reactions: Json | null
+          user_id: string
+          venture_id: string
+        }
+        Insert: {
+          attachments?: Json | null
+          content: string
+          created_at?: string
+          id?: string
+          reactions?: Json | null
+          user_id: string
+          venture_id: string
+        }
+        Update: {
+          attachments?: Json | null
+          content?: string
+          created_at?: string
+          id?: string
+          reactions?: Json | null
+          user_id?: string
+          venture_id?: string
+        }
+        Relationships: []
+      }
       executor_profiles: {
         Row: {
           active_projects_count: number
@@ -268,6 +298,87 @@ export type Database = {
           email?: string
           id?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      tasks: {
+        Row: {
+          assignee_id: string | null
+          attachments_count: number
+          blocked: boolean
+          blocker_reason: string | null
+          comments_count: number
+          created_at: string
+          created_by: string
+          description: string | null
+          due_date: string | null
+          id: string
+          priority: string
+          status: string
+          title: string
+          updated_at: string
+          venture_id: string
+        }
+        Insert: {
+          assignee_id?: string | null
+          attachments_count?: number
+          blocked?: boolean
+          blocker_reason?: string | null
+          comments_count?: number
+          created_at?: string
+          created_by: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string
+          status?: string
+          title: string
+          updated_at?: string
+          venture_id: string
+        }
+        Update: {
+          assignee_id?: string | null
+          attachments_count?: number
+          blocked?: boolean
+          blocker_reason?: string | null
+          comments_count?: number
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string
+          status?: string
+          title?: string
+          updated_at?: string
+          venture_id?: string
+        }
+        Relationships: []
+      }
+      user_presence: {
+        Row: {
+          id: string
+          last_seen: string
+          status: string
+          updated_at: string
+          user_id: string
+          venture_id: string
+        }
+        Insert: {
+          id?: string
+          last_seen?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+          venture_id: string
+        }
+        Update: {
+          id?: string
+          last_seen?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+          venture_id?: string
         }
         Relationships: []
       }

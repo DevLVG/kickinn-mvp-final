@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
+import { supabase } from '@/integrations/supabase/client';
 import WorkspaceHeader from '@/components/workspace/WorkspaceHeader';
 import TaskBoard from '@/components/workspace/TaskBoard';
 import MilestonesPanel from '@/components/workspace/MilestonesPanel';
@@ -74,6 +75,42 @@ const VentureWorkspace = () => {
     email: 'john@example.com',
     initials: 'JE',
   });
+
+  // Track user presence
+  useEffect(() => {
+    const updatePresence = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user || !id) return;
+
+      await supabase
+        .from('user_presence')
+        .upsert({
+          venture_id: id,
+          user_id: user.id,
+          status: 'online',
+          last_seen: new Date().toISOString()
+        });
+    };
+
+    updatePresence();
+    const interval = setInterval(updatePresence, 30000); // Update every 30s
+
+    // Mark as offline on unmount
+    return () => {
+      clearInterval(interval);
+      const markOffline = async () => {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user || !id) return;
+
+        await supabase
+          .from('user_presence')
+          .update({ status: 'offline', last_seen: new Date().toISOString() })
+          .eq('venture_id', id)
+          .eq('user_id', user.id);
+      };
+      markOffline();
+    };
+  }, [id]);
 
   return (
     <DashboardLayout

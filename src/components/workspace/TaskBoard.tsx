@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 import TaskColumn from './TaskColumn';
 import TaskDetailModal from './TaskDetailModal';
 import { Button } from '@/components/ui/button';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 interface Task {
   id: string;
@@ -30,67 +32,80 @@ interface TaskBoardProps {
 const TaskBoard = ({ ventureId }: TaskBoardProps) => {
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [tasks, setTasks] = useState<TasksState>({
-    todo: [
-      {
-        id: 't1',
-        title: 'Implement user authentication flow',
-        priority: 'high' as const,
-        assignee: { id: 't4', name: 'You', avatar: '' },
-        dueDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000).toISOString(),
-        comments: 2,
-        attachments: 1,
-        blocked: false,
-      },
-      {
-        id: 't2',
-        title: 'Design dashboard components',
-        priority: 'medium' as const,
-        assignee: { id: 't3', name: 'Aisha', avatar: '' },
-        dueDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000).toISOString(),
-        comments: 0,
-        attachments: 0,
-        blocked: false,
-      },
-    ],
-    inProgress: [
-      {
-        id: 't3',
-        title: 'Set up API endpoints',
-        priority: 'high' as const,
-        assignee: { id: 't2', name: 'Marco', avatar: '' },
-        dueDate: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toISOString(),
-        comments: 5,
-        attachments: 2,
-        blocked: false,
-      },
-    ],
-    review: [
-      {
-        id: 't4',
-        title: 'Complete wireframe designs',
-        priority: 'medium' as const,
-        assignee: { id: 't3', name: 'Aisha', avatar: '' },
-        dueDate: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000).toISOString(),
-        comments: 3,
-        attachments: 4,
-        blocked: false,
-      },
-    ],
-    done: [
-      {
-        id: 't5',
-        title: 'Project setup and configuration',
-        priority: 'low' as const,
-        assignee: { id: 't2', name: 'Marco', avatar: '' },
-        dueDate: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString(),
-        comments: 1,
-        attachments: 0,
-        blocked: false,
-      },
-    ],
+    todo: [],
+    inProgress: [],
+    review: [],
+    done: []
   });
 
-  const handleDragEnd = (result: DropResult) => {
+  // Fetch and subscribe to tasks
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const { data, error } = await supabase
+        .from('tasks')
+        .select('*')
+        .eq('venture_id', ventureId);
+
+      if (error) {
+        console.error('Error fetching tasks:', error);
+        return;
+      }
+
+      const grouped: TasksState = {
+        todo: [],
+        inProgress: [],
+        review: [],
+        done: []
+      };
+
+      data.forEach(task => {
+        const taskObj: Task = {
+          id: task.id,
+          title: task.title,
+          priority: task.priority as any,
+          assignee: task.assignee_id ? { id: task.assignee_id, name: 'Team Member', avatar: '' } : undefined,
+          dueDate: task.due_date,
+          comments: task.comments_count,
+          attachments: task.attachments_count,
+          blocked: task.blocked,
+          blockerReason: task.blocker_reason
+        };
+
+        if (task.status === 'todo') grouped.todo.push(taskObj);
+        else if (task.status === 'inProgress') grouped.inProgress.push(taskObj);
+        else if (task.status === 'review') grouped.review.push(taskObj);
+        else if (task.status === 'done') grouped.done.push(taskObj);
+      });
+
+      setTasks(grouped);
+    };
+
+    fetchTasks();
+
+    // Subscribe to real-time updates
+    const channel = supabase
+      .channel(`tasks-${ventureId}`)
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'tasks',
+          filter: `venture_id=eq.${ventureId}`
+        },
+        () => {
+          fetchTasks(); // Refetch all tasks on any change
+          toast.success('Tasks updated');
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [ventureId]);
+
+  const handleDragEnd = async (result: DropResult) => {
     const { source, destination } = result;
 
     if (!destination) return;
@@ -103,6 +118,7 @@ const TaskBoard = ({ ventureId }: TaskBoardProps) => {
     const sourceTasks = [...tasks[sourceColumn]];
     const [removed] = sourceTasks.splice(source.index, 1);
 
+    // Optimistic update
     if (sourceColumn === destColumn) {
       sourceTasks.splice(destination.index, 0, removed);
       setTasks({ ...tasks, [sourceColumn]: sourceTasks });
@@ -114,6 +130,19 @@ const TaskBoard = ({ ventureId }: TaskBoardProps) => {
         [sourceColumn]: sourceTasks,
         [destColumn]: destTasks,
       });
+
+      // Update task status in database
+      try {
+        const { error } = await supabase
+          .from('tasks')
+          .update({ status: destColumn })
+          .eq('id', removed.id);
+
+        if (error) throw error;
+      } catch (error) {
+        console.error('Error updating task:', error);
+        toast.error('Failed to update task');
+      }
     }
   };
 

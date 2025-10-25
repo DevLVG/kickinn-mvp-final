@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from 'sonner';
 
 interface TeamMember {
   id: string;
@@ -57,7 +59,7 @@ const mockMessages: Message[] = [
 
 const TeamChat = ({ ventureId, team, currentUserId }: TeamChatProps) => {
   const [message, setMessage] = useState('');
-  const [messages, setMessages] = useState<Message[]>(mockMessages);
+  const [messages, setMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -68,18 +70,87 @@ const TeamChat = ({ ventureId, team, currentUserId }: TeamChatProps) => {
     scrollToBottom();
   }, [messages]);
 
-  const handleSend = () => {
-    if (!message.trim()) return;
+  // Fetch existing messages
+  useEffect(() => {
+    const fetchMessages = async () => {
+      const { data, error } = await supabase
+        .from('chat_messages')
+        .select('*')
+        .eq('venture_id', ventureId)
+        .order('created_at', { ascending: true });
 
-    const newMessage: Message = {
-      id: `m${Date.now()}`,
-      userId: currentUserId,
-      content: message,
-      timestamp: new Date().toISOString(),
+      if (error) {
+        console.error('Error fetching messages:', error);
+        return;
+      }
+
+      setMessages(data.map(msg => ({
+        id: msg.id,
+        userId: msg.user_id,
+        content: msg.content,
+        timestamp: msg.created_at,
+        reactions: msg.reactions as any,
+        attachments: msg.attachments as any
+      })));
     };
 
-    setMessages([...messages, newMessage]);
-    setMessage('');
+    fetchMessages();
+
+    // Subscribe to real-time updates
+    const channel = supabase
+      .channel(`chat-${ventureId}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'chat_messages',
+          filter: `venture_id=eq.${ventureId}`
+        },
+        (payload) => {
+          const newMsg = payload.new;
+          setMessages(prev => [...prev, {
+            id: newMsg.id,
+            userId: newMsg.user_id,
+            content: newMsg.content,
+            timestamp: newMsg.created_at,
+            reactions: newMsg.reactions,
+            attachments: newMsg.attachments
+          }]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [ventureId]);
+
+  const handleSend = async () => {
+    if (!message.trim()) return;
+
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        toast.error('You must be logged in to send messages');
+        return;
+      }
+
+      const { error } = await supabase
+        .from('chat_messages')
+        .insert({
+          venture_id: ventureId,
+          user_id: user.id,
+          content: message
+        });
+
+      if (error) throw error;
+      
+      setMessage('');
+    } catch (error) {
+      console.error('Error sending message:', error);
+      toast.error('Failed to send message');
+    }
   };
 
   const getUserInfo = (userId: string) => {
