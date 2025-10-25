@@ -5,3 +5,6 @@ verify_jwt = true
 
 [functions.submit-clarification-answers]
 verify_jwt = true
+
+[functions.calculate-fit-score]
+verify_jwt = true

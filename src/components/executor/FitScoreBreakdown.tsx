@@ -1,3 +1,7 @@
+import { useState, useEffect } from 'react';
+import { supabase } from '@/integrations/supabase/client';
+import LoadingSpinner from '@/components/LoadingSpinner';
+
 interface FitComponent {
   score: number;
   weight: number;
@@ -5,22 +9,73 @@ interface FitComponent {
 }
 
 interface FitScoreBreakdownProps {
-  fitScore: number;
-  breakdown: {
-    skillsMatch: FitComponent;
-    experienceLevel: FitComponent;
-    successRate: FitComponent;
-    deliverySpeed: FitComponent;
-  };
+  opportunityId: string;
+  requiredSkills: string[];
+  timelineWeeks?: number;
 }
 
-const FitScoreBreakdown = ({ fitScore, breakdown }: FitScoreBreakdownProps) => {
-  const components = [
-    { key: 'skillsMatch', label: 'Skills Match', data: breakdown.skillsMatch },
-    { key: 'experienceLevel', label: 'Experience Level', data: breakdown.experienceLevel },
-    { key: 'successRate', label: 'Success Rate', data: breakdown.successRate },
-    { key: 'deliverySpeed', label: 'Delivery Speed', data: breakdown.deliverySpeed },
-  ];
+const FitScoreBreakdown = ({ opportunityId, requiredSkills, timelineWeeks }: FitScoreBreakdownProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [fitScore, setFitScore] = useState<number>(0);
+  const [breakdown, setBreakdown] = useState<any>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadFitScore = async () => {
+      try {
+        setIsLoading(true);
+        
+        const { data: functionData, error: functionError } = await supabase.functions.invoke(
+          'calculate-fit-score',
+          {
+            body: {
+              opportunityId,
+              requiredSkills,
+              timelineWeeks
+            }
+          }
+        );
+
+        if (functionError) {
+          throw functionError;
+        }
+
+        if (functionData?.fitScore) {
+          const fs = functionData.fitScore;
+          setFitScore(Number(fs.overall_score));
+          setBreakdown({
+            skillsMatch: {
+              score: Number(fs.skills_match_score),
+              weight: fs.skills_match_weight,
+              explanation: fs.skills_match_explanation
+            },
+            experienceLevel: {
+              score: Number(fs.experience_score),
+              weight: fs.experience_weight,
+              explanation: fs.experience_explanation
+            },
+            successRate: {
+              score: Number(fs.success_rate_score),
+              weight: fs.success_rate_weight,
+              explanation: fs.success_rate_explanation
+            },
+            deliverySpeed: {
+              score: Number(fs.delivery_speed_score),
+              weight: fs.delivery_speed_weight,
+              explanation: fs.delivery_speed_explanation
+            }
+          });
+        }
+      } catch (err) {
+        console.error('Error loading fit score:', err);
+        setError('Failed to calculate fit score. Please try again.');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadFitScore();
+  }, [opportunityId, requiredSkills, timelineWeeks]);
 
   const getScoreColor = (score: number) => {
     if (score >= 90) return 'from-success to-success/80';
@@ -28,6 +83,33 @@ const FitScoreBreakdown = ({ fitScore, breakdown }: FitScoreBreakdownProps) => {
     if (score >= 60) return 'from-warning to-warning/80';
     return 'from-muted to-muted/80';
   };
+
+  if (isLoading) {
+    return (
+      <div className="bg-gradient-to-br from-secondary-teal/10 to-accent-blue/10 border border-secondary-teal/30 rounded-2xl p-8 flex items-center justify-center min-h-[300px]">
+        <LoadingSpinner />
+      </div>
+    );
+  }
+
+  if (error || !breakdown) {
+    return (
+      <div className="bg-gradient-to-br from-secondary-teal/10 to-accent-blue/10 border border-secondary-teal/30 rounded-2xl p-8">
+        <div className="text-center">
+          <div className="text-5xl mb-4">⚠️</div>
+          <h3 className="text-xl font-bold text-gray-700 mb-2">Unable to Calculate Fit Score</h3>
+          <p className="text-sm text-gray-600">{error || 'An unexpected error occurred'}</p>
+        </div>
+      </div>
+    );
+  }
+
+  const components = [
+    { key: 'skillsMatch', label: 'Skills Match', data: breakdown.skillsMatch },
+    { key: 'experienceLevel', label: 'Experience Level', data: breakdown.experienceLevel },
+    { key: 'successRate', label: 'Success Rate', data: breakdown.successRate },
+    { key: 'deliverySpeed', label: 'Delivery Speed', data: breakdown.deliverySpeed },
+  ];
 
   return (
     <div className="bg-gradient-to-br from-secondary-teal/10 to-accent-blue/10 border border-secondary-teal/30 rounded-2xl p-8">

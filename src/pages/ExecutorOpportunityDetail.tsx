@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
+import { supabase } from '@/integrations/supabase/client';
 import DashboardLayout from '@/components/dashboard/DashboardLayout';
 import OpportunityHeader from '@/components/executor/OpportunityHeader';
 import ActiveProjectsBanner from '@/components/executor/ActiveProjectsBanner';
@@ -137,6 +138,37 @@ const ExecutorOpportunityDetail = () => {
   const navigate = useNavigate();
   const [isSaved, setIsSaved] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [fitScore, setFitScore] = useState<number>(0);
+  const [isFitScoreLoading, setIsFitScoreLoading] = useState(true);
+
+  // Load fit score on mount
+  useEffect(() => {
+    const loadFitScore = async () => {
+      try {
+        setIsFitScoreLoading(true);
+        const { data: functionData } = await supabase.functions.invoke(
+          'calculate-fit-score',
+          {
+            body: {
+              opportunityId: id,
+              requiredSkills: mockOpportunity.requiredSkills,
+              timelineWeeks: 3
+            }
+          }
+        );
+
+        if (functionData?.fitScore) {
+          setFitScore(Number(functionData.fitScore.overall_score));
+        }
+      } catch (err) {
+        console.error('Error loading fit score:', err);
+      } finally {
+        setIsFitScoreLoading(false);
+      }
+    };
+
+    loadFitScore();
+  }, [id]);
 
   // Mock executor data
   const executor = {
@@ -190,7 +222,7 @@ const ExecutorOpportunityDetail = () => {
         <OpportunityHeader
           title={mockOpportunity.ventureTitle}
           ventureType={mockOpportunity.ventureType}
-          fitScore={mockOpportunity.fitScore}
+          fitScore={isFitScoreLoading ? 0 : fitScore}
           isSaved={isSaved}
           onSaveToggle={handleSaveToggle}
         />
@@ -258,8 +290,9 @@ const ExecutorOpportunityDetail = () => {
 
         {/* Fit Score Breakdown */}
         <FitScoreBreakdown
-          fitScore={mockOpportunity.fitScore}
-          breakdown={mockOpportunity.fitBreakdown}
+          opportunityId={mockOpportunity.id}
+          requiredSkills={mockOpportunity.requiredSkills}
+          timelineWeeks={3}
         />
 
         {/* Application Form */}
