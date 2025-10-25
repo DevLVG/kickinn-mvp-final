@@ -33,31 +33,31 @@ const ComparisonCard = ({
       <div className="grid md:grid-cols-2 gap-6">
         {/* Traditional VC - Left */}
         <div className="space-y-3">
-          <div className="flex items-center gap-2 text-[#ef4444] mb-3">
+          <div className="flex items-center gap-2 text-white mb-3">
             <X className="w-5 h-5 flex-shrink-0" />
             <span className="text-sm font-semibold">Traditional VC</span>
           </div>
           
           <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#ef4444]/20 flex items-center justify-center flex-shrink-0">
-              <OldIcon className="w-6 h-6 text-[#ef4444]" />
+            <div className="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center flex-shrink-0">
+              <OldIcon className="w-6 h-6 text-slate-400" />
             </div>
-            <p className="text-sm text-slate-200 leading-relaxed">{oldWay}</p>
+            <p className="text-sm text-slate-300 leading-relaxed">{oldWay}</p>
           </div>
         </div>
 
         {/* Kick Inn - Right */}
         <div className="space-y-3">
-          <div className="flex items-center gap-2 text-[#4ade80] mb-3">
+          <div className="flex items-center gap-2 text-white mb-3">
             <Check className="w-5 h-5 flex-shrink-0" />
             <span className="text-sm font-semibold">Kick Inn</span>
           </div>
           
           <div className="flex items-start gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#4ade80]/20 flex items-center justify-center flex-shrink-0">
-              <NewIcon className="w-6 h-6 text-[#4ade80]" />
+            <div className="w-10 h-10 rounded-full bg-slate-700/50 flex items-center justify-center flex-shrink-0">
+              <NewIcon className="w-6 h-6 text-slate-400" />
             </div>
-            <p className="text-sm text-slate-200 leading-relaxed">{kickInnWay}</p>
+            <p className="text-sm text-slate-300 leading-relaxed">{kickInnWay}</p>
           </div>
         </div>
       </div>
