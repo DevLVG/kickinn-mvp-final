@@ -39,6 +39,7 @@ import Terms from "./pages/TermsOfService";
 import Privacy from "./pages/PrivacyPolicy";
 import Notifications from "./pages/Notifications";
 import Settings from "./pages/Settings";
+import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -91,9 +92,12 @@ const App = () => (
           <Route path="/buyer/offers" element={<ComingSoon />} />
           <Route path="/buyer/acquired" element={<ComingSoon />} />
           
-          {/* Notifications */}
+          {/* Notifications & Settings */}
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/settings" element={<Settings />} />
+          
+          {/* Admin Routes */}
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
           
           {/* Static Pages */}
           <Route path="/about" element={<About />} />
