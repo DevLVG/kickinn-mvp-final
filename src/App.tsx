@@ -42,6 +42,7 @@ import Settings from "./pages/Settings";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminUsers from "./pages/AdminUsers";
 import AdminVentures from "./pages/AdminVentures";
+import InvestorKYC from "./pages/InvestorKYC";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -102,6 +103,9 @@ const App = () => (
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<AdminUsers />} />
           <Route path="/admin/ventures" element={<AdminVentures />} />
+          
+          {/* KYC Routes */}
+          <Route path="/investor/kyc" element={<InvestorKYC />} />
           
           {/* Static Pages */}
           <Route path="/about" element={<About />} />
