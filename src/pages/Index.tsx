@@ -451,10 +451,7 @@ const Index = () => {
 
       {/* Section 5: Why Kick Inn Beats Traditional VC */}
       <section 
-        className="px-8 md:px-16 py-24"
-        style={{ 
-          background: 'linear-gradient(135deg, hsla(150, 25%, 52%, 0.08), hsla(199, 60%, 34%, 0.08))' 
-        }}
+        className="px-8 md:px-16 py-24 bg-gradient-to-b from-slate-50 to-white"
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -463,7 +460,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4">
               Why Kick Inn Beats Traditional VC
             </h2>
           </motion.div>
