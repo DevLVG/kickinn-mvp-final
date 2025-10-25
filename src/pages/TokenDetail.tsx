@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { connectTonWallet, formatWalletAddress } from "@/utils/tonWallet";
+import { toast } from "sonner";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import LoadingSpinner from "@/components/LoadingSpinner";
 import TokenSummaryCard from "@/components/tokens/TokenSummaryCard";
 import VestingScheduleSection from "@/components/tokens/VestingScheduleSection";
 import TokenPriceSection from "@/components/tokens/TokenPriceSection";
@@ -15,11 +19,68 @@ const TokenDetail = () => {
   const { venture_id } = useParams();
   const navigate = useNavigate();
   
+  const [loading, setLoading] = useState(true);
   const [walletConnected, setWalletConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
   const [showClaimModal, setShowClaimModal] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [claimedAmount, setClaimedAmount] = useState(0);
+  const [tokenBalance, setTokenBalance] = useState<any>(null);
+  const [claiming, setClaiming] = useState(false);
+
+  // Fetch token balance from database
+  useEffect(() => {
+    const fetchTokenBalance = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user || !venture_id) {
+        setLoading(false);
+        return;
+      }
+
+      const { data, error } = await supabase
+        .from('token_balances')
+        .select('*')
+        .eq('venture_id', venture_id)
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      if (error) {
+        console.error('Error fetching token balance:', error);
+        toast.error('Failed to load token balance');
+      } else if (data) {
+        setTokenBalance(data);
+        if (data.wallet_address) {
+          setWalletConnected(true);
+          setWalletAddress(data.wallet_address);
+        }
+      }
+      setLoading(false);
+    };
+
+    fetchTokenBalance();
+
+    // Subscribe to real-time balance updates
+    const channel = supabase
+      .channel(`token-balance-${venture_id}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'UPDATE',
+          schema: 'public',
+          table: 'token_balances',
+          filter: `venture_id=eq.${venture_id}`
+        },
+        (payload) => {
+          setTokenBalance(payload.new);
+          toast.success('Token balance updated');
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [venture_id]);
 
   // Mock data - would come from API
   // In real app, this would come from API based on user's role in this venture
@@ -67,11 +128,20 @@ const TokenDetail = () => {
     }
   };
 
-  const handleConnectWallet = () => {
-    setTimeout(() => {
-      setWalletConnected(true);
-      setWalletAddress("0xAbCd...5678");
-    }, 500);
+  const handleConnectWallet = async () => {
+    try {
+      const connection = await connectTonWallet();
+      if (connection) {
+        setWalletConnected(true);
+        setWalletAddress(formatWalletAddress(connection.address));
+        toast.success(`Wallet connected: ${formatWalletAddress(connection.address)}`);
+      } else {
+        toast.error('Failed to connect wallet');
+      }
+    } catch (error) {
+      console.error('Error connecting wallet:', error);
+      toast.error('Failed to connect wallet');
+    }
   };
 
   const handleClaimClick = () => {
@@ -82,14 +152,37 @@ const TokenDetail = () => {
     setShowClaimModal(true);
   };
 
-  const handleConfirmClaim = () => {
+  const handleConfirmClaim = async () => {
+    if (!tokenBalance || !walletAddress) return;
+
+    setClaiming(true);
     setShowClaimModal(false);
-    
-    // Simulate blockchain transaction
-    setTimeout(() => {
-      setClaimedAmount(tokenData.tokens.claimable);
-      setShowSuccessModal(true);
-    }, 2000);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('claim-tokens', {
+        body: {
+          ventureId: venture_id,
+          amount: tokenBalance.claimable,
+          tokenSymbol: 'TOKEN',
+          walletAddress: walletAddress
+        }
+      });
+
+      if (error) throw error;
+
+      if (data.success) {
+        setClaimedAmount(tokenBalance.claimable);
+        toast.success('Tokens claimed successfully!');
+        setShowSuccessModal(true);
+      } else {
+        throw new Error('Claim failed');
+      }
+    } catch (error) {
+      console.error('Error claiming tokens:', error);
+      toast.error('Failed to claim tokens. Please try again.');
+    } finally {
+      setClaiming(false);
+    }
   };
 
   const handleSellOnDex = () => {

@@ -355,6 +355,90 @@ export type Database = {
         }
         Relationships: []
       }
+      token_balances: {
+        Row: {
+          claimable: number
+          claimed: number
+          id: string
+          token_symbol: string
+          total_allocated: number
+          updated_at: string
+          user_id: string
+          venture_id: string
+          vested: number
+          wallet_address: string | null
+        }
+        Insert: {
+          claimable?: number
+          claimed?: number
+          id?: string
+          token_symbol: string
+          total_allocated?: number
+          updated_at?: string
+          user_id: string
+          venture_id: string
+          vested?: number
+          wallet_address?: string | null
+        }
+        Update: {
+          claimable?: number
+          claimed?: number
+          id?: string
+          token_symbol?: string
+          total_allocated?: number
+          updated_at?: string
+          user_id?: string
+          venture_id?: string
+          vested?: number
+          wallet_address?: string | null
+        }
+        Relationships: []
+      }
+      token_transactions: {
+        Row: {
+          amount: number
+          completed_at: string | null
+          created_at: string
+          gas_fee: number | null
+          id: string
+          status: string
+          token_symbol: string
+          transaction_hash: string | null
+          transaction_type: string
+          user_id: string
+          venture_id: string
+          wallet_address: string
+        }
+        Insert: {
+          amount: number
+          completed_at?: string | null
+          created_at?: string
+          gas_fee?: number | null
+          id?: string
+          status?: string
+          token_symbol: string
+          transaction_hash?: string | null
+          transaction_type: string
+          user_id: string
+          venture_id: string
+          wallet_address: string
+        }
+        Update: {
+          amount?: number
+          completed_at?: string | null
+          created_at?: string
+          gas_fee?: number | null
+          id?: string
+          status?: string
+          token_symbol?: string
+          transaction_hash?: string | null
+          transaction_type?: string
+          user_id?: string
+          venture_id?: string
+          wallet_address?: string
+        }
+        Relationships: []
+      }
       user_presence: {
         Row: {
           id: string
