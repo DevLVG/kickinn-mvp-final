@@ -278,65 +278,6 @@ const Index = () => {
 
       {/* Section 3: How It Works */}
       <section 
-        className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
-        style={{ background: 'rgba(25, 74, 97, 0.5)' }}
-      >
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Join 10,000+ Members Building the Future
-            </h2>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <RoleCard
-              icon={Lightbulb}
-              title="Ideator"
-              description="Submit ideas, earn equity tokens"
-              memberCount="5.2K members"
-              ctaText="Submit Your Idea"
-              ctaLink="/register?role=ideator"
-              index={0}
-            />
-            <RoleCard
-              icon={Wrench}
-              title="Executor"
-              description="Build MVPs, get paid on-chain"
-              memberCount="3.1K members"
-              badge="🔥 Hiring"
-              ctaText="Browse Projects"
-              ctaLink="/register?role=executor"
-              index={1}
-            />
-            <RoleCard
-              icon={TrendingUp}
-              title="Investor"
-              description="Fund ventures, exit in 12-36mo"
-              memberCount="1.8K members"
-              ctaText="See Deals"
-              ctaLink="/register?role=investor"
-              index={2}
-            />
-            <RoleCard
-              icon={Building2}
-              title="Buyer"
-              description="Acquire revenue-ready businesses"
-              memberCount="200+ acquisitions"
-              ctaText="View Exits"
-              ctaLink="/register?role=buyer"
-              index={3}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: How It Works */}
-      <section 
         className="px-8 md:px-16 py-24 relative overflow-hidden"
         style={{ background: 'rgba(15, 43, 56, 0.6)' }}
         aria-label="Platform process timeline"
@@ -477,6 +418,65 @@ const Index = () => {
               <span className="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
             </Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Section 4: Join Our Marketplace */}
+      <section 
+        className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
+        style={{ background: 'rgba(25, 74, 97, 0.5)' }}
+      >
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Join 10,000+ Members Building the Future
+            </h2>
+          </motion.div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <RoleCard
+              icon={Lightbulb}
+              title="Ideator"
+              description="Submit ideas, earn equity tokens"
+              memberCount="5.2K members"
+              ctaText="Submit Your Idea"
+              ctaLink="/register?role=ideator"
+              index={0}
+            />
+            <RoleCard
+              icon={Wrench}
+              title="Executor"
+              description="Build MVPs, get paid on-chain"
+              memberCount="3.1K members"
+              badge="🔥 Hiring"
+              ctaText="Browse Projects"
+              ctaLink="/register?role=executor"
+              index={1}
+            />
+            <RoleCard
+              icon={TrendingUp}
+              title="Investor"
+              description="Fund ventures, exit in 12-36mo"
+              memberCount="1.8K members"
+              ctaText="See Deals"
+              ctaLink="/register?role=investor"
+              index={2}
+            />
+            <RoleCard
+              icon={Building2}
+              title="Buyer"
+              description="Acquire revenue-ready businesses"
+              memberCount="200+ acquisitions"
+              ctaText="View Exits"
+              ctaLink="/register?role=buyer"
+              index={3}
+            />
+          </div>
         </div>
       </section>
 
