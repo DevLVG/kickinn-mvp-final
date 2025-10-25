@@ -436,7 +436,7 @@ const Index = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                className="text-base font-medium px-8 py-6 text-white border-2 border-white/30 hover:bg-white/10"
+                className="text-base font-medium px-8 py-6 text-white border-2 border-white bg-transparent hover:bg-white/10"
               >
                 Browse Opportunities
               </Button>
