@@ -21,11 +21,11 @@ const FAQItem = ({ question, answer, index }: FAQItemProps) => {
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-6 flex items-center justify-between text-left hover:opacity-80 transition-opacity"
+        className="w-full py-4 md:py-6 flex items-center justify-between text-left hover:opacity-80 transition-opacity"
         aria-expanded={isOpen}
         style={{ color: '#194a61' }}
       >
-        <h3 className="text-lg font-semibold pr-8">{question}</h3>
+        <h3 className="text-base md:text-lg font-semibold pr-4 md:pr-8">{question}</h3>
         <ChevronDown
           className={`w-6 h-6 flex-shrink-0 transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
@@ -42,7 +42,7 @@ const FAQItem = ({ question, answer, index }: FAQItemProps) => {
         transition={{ duration: 0.3 }}
         className="overflow-hidden"
       >
-        <p className="pb-6 leading-relaxed" style={{ color: '#194a61', opacity: 0.85 }}>{answer}</p>
+        <p className="pb-4 md:pb-6 leading-relaxed text-sm md:text-base" style={{ color: '#194a61', opacity: 0.85 }}>{answer}</p>
       </motion.div>
     </motion.div>
   );

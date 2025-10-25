@@ -69,8 +69,8 @@ const ProcessStep = ({
         whileHover={{ scale: 1.05 }}
         className="text-center px-4 py-6 rounded-2xl backdrop-blur-md border border-[#679f83]/20 transition-all duration-300 bg-white/5 hover:border-[#679f83]/40 hover:shadow-[0_8px_30px_hsla(150,25%,52%,0.3)]"
       >
-        <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
-        <p className="text-slate-200 text-sm leading-relaxed mb-4 min-h-[60px]">
+        <h3 className="text-lg md:text-xl font-bold text-white mb-3">{title}</h3>
+        <p className="text-slate-200 text-sm md:text-base leading-relaxed mb-4 min-h-[60px]">
           {description}
         </p>
         <div 

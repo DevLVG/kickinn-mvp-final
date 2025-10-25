@@ -24,14 +24,14 @@ const ComparisonCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.15 }}
-      className="bg-white/5 backdrop-blur-md border border-[#679f83]/20 rounded-2xl p-8 hover:border-[#679f83]/40 hover:-translate-y-2 transition-all duration-300"
+      className="bg-white/5 backdrop-blur-md border border-[#679f83]/20 rounded-2xl p-6 md:p-8 hover:border-[#679f83]/40 hover:-translate-y-2 transition-all duration-300"
       style={{ background: 'rgba(255, 255, 255, 0.05)' }}
     >
       {/* Title */}
-      <h3 className="text-xl font-bold mb-6 text-center" style={{ color: '#194a61' }}>{title}</h3>
+      <h3 className="text-lg md:text-xl font-bold mb-6 text-center" style={{ color: '#194a61' }}>{title}</h3>
 
       {/* Two-column comparison */}
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
         {/* Traditional VC - Left */}
         <div className="space-y-3">
           <div className="flex items-center gap-2 mb-3" style={{ color: '#194a61' }}>

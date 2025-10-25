@@ -32,7 +32,7 @@ const RoleCard = ({
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       whileHover={{ y: -8 }}
-      className="group relative bg-white/5 backdrop-blur-md border border-[#679f83]/20 rounded-2xl p-8 hover:border-[#679f83]/50 hover:shadow-[0_8px_30px_rgba(103,159,131,0.3)] transition-all duration-300"
+      className="group relative bg-white/5 backdrop-blur-md border border-[#679f83]/20 rounded-2xl p-6 md:p-8 hover:border-[#679f83]/50 hover:shadow-[0_8px_30px_rgba(103,159,131,0.3)] transition-all duration-300"
       aria-label={`${title} role with ${memberCount}`}
     >
       {/* Member Count Badge - Top Right */}
@@ -64,10 +64,10 @@ const RoleCard = ({
       </motion.div>
 
       {/* Title */}
-      <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
+      <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{title}</h3>
 
       {/* Description */}
-      <p className="text-white/85 text-sm mb-6 line-clamp-1">{description}</p>
+      <p className="text-white/85 text-sm md:text-base mb-6 line-clamp-1">{description}</p>
 
       {/* CTA Button */}
       <Link to={ctaLink}>

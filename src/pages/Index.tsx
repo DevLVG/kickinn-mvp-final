@@ -19,7 +19,7 @@ const Index = () => {
 
       {/* Section 1: Hero */}
       <section 
-        className="min-h-screen px-8 md:px-16 pt-32 pb-20 relative overflow-hidden"
+        className="min-h-screen px-4 md:px-8 lg:px-16 pt-24 md:pt-32 pb-16 md:pb-20 relative overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, #0f2b38 0%, #194a61 50%, #0f2b38 100%)',
         }}
@@ -63,7 +63,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-4xl md:text-[56px] font-bold text-white leading-tight"
+                className="text-4xl md:text-5xl lg:text-[56px] font-bold text-white leading-tight"
               >
                 Turn Ideas Into Funded Ventures. <span className="bg-gradient-to-r from-[#679f83] to-[#86b39c] bg-clip-text text-transparent">No Founder Needed.</span>
               </motion.h1>
@@ -72,7 +72,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-lg text-white/85 leading-relaxed max-w-xl"
+                className="text-base md:text-lg text-white/85 leading-relaxed max-w-xl"
               >
                 AI validates your concept. Executors build the MVP. Investors fund it. You keep equity.
               </motion.p>
@@ -105,19 +105,20 @@ const Index = () => {
 
               {/* Dual CTAs */}
               <motion.div 
-                className="flex flex-wrap gap-4 pt-6"
+                className="flex flex-col md:flex-row gap-3 md:gap-4 pt-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.7 }}
               >
-                <Link to="/register?role=ideator">
+                <Link to="/register?role=ideator" className="w-full md:w-auto">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    className="w-full"
                   >
                     <Button 
                       size="lg"
-                      className="text-base font-medium px-8 py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:-translate-y-0.5 transition-all"
+                      className="w-full md:w-auto text-sm md:text-base font-medium px-8 py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:-translate-y-0.5 transition-all"
                       style={{ 
                         boxShadow: '0 8px 24px rgba(103, 159, 131, 0.3)'
                       }}
@@ -126,15 +127,16 @@ const Index = () => {
                     </Button>
                   </motion.div>
                 </Link>
-                <Link to="/register?role=executor">
+                <Link to="/register?role=executor" className="w-full md:w-auto">
                   <motion.div
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    className="w-full"
                   >
                     <Button 
                       size="lg"
                       variant="ghost"
-                      className="text-base font-medium px-8 py-6 text-white border-2 border-white/30 hover:bg-white/10 hover:-translate-y-0.5 transition-all"
+                      className="w-full md:w-auto text-sm md:text-base font-medium px-8 py-6 text-white border-2 border-white/30 hover:bg-white/10 hover:-translate-y-0.5 transition-all"
                     >
                       I'm an Executor
                     </Button>
@@ -159,7 +161,7 @@ const Index = () => {
             </div>
             
             {/* Right Column - Dashboard Mockup */}
-            <div className="flex justify-center md:justify-end">
+            <div className="hidden md:flex justify-center md:justify-end">
               <HeroMockup />
             </div>
           </div>
@@ -168,11 +170,11 @@ const Index = () => {
 
       {/* Social Proof Bar */}
       <section 
-        className="px-8 md:px-16 py-12"
+        className="px-4 md:px-8 lg:px-16 py-8 md:py-12"
         style={{ background: 'rgba(15, 43, 56, 0.8)' }}
       >
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -214,7 +216,7 @@ const Index = () => {
 
       {/* Section 2: Why Kick Inn Beats Traditional VC */}
       <section 
-        className="px-8 md:px-16 py-24 md:py-32"
+        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32"
         style={{ background: '#f5f7f8' }}
       >
         <div className="max-w-7xl mx-auto">
@@ -222,14 +224,14 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-4" style={{ color: '#194a61' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#194a61' }}>
               Why Kick Inn Beats Traditional VC
             </h2>
           </motion.div>
           
-          <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
             <ComparisonCard
               title="No Founder Bottleneck"
               oldWay="Need charismatic founder + pitch deck"
@@ -277,7 +279,7 @@ const Index = () => {
 
       {/* Section 3: How It Works */}
       <section 
-        className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
+        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden"
         style={{ background: 'rgba(25, 74, 97, 0.5)' }}
         aria-label="Platform process timeline"
       >
@@ -297,18 +299,18 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
               How Kick Inn Works
             </h2>
-            <p className="text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base md:text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
               From idea to exit-ready venture in 4 automated stages
             </p>
           </motion.div>
           
           {/* Process Timeline - Desktop */}
-          <div className="hidden md:flex gap-8 mb-16 relative">
+          <div className="hidden lg:flex gap-8 mb-12 md:mb-16 relative">
             <ProcessStep
               icon={MessageSquarePlus}
               iconColor="#14b8a6"
@@ -344,8 +346,8 @@ const Index = () => {
             />
           </div>
 
-          {/* Process Timeline - Mobile */}
-          <div className="md:hidden space-y-8 mb-16">
+          {/* Process Timeline - Mobile/Tablet */}
+          <div className="lg:hidden space-y-6 md:space-y-8 mb-12 md:mb-16">
             <ProcessStep
               icon={MessageSquarePlus}
               iconColor="#14b8a6"
@@ -389,12 +391,12 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-wrap justify-center items-center gap-4"
+            className="flex flex-col md:flex-row flex-wrap justify-center items-center gap-3 md:gap-4"
           >
-            <Link to="/register?role=ideator">
+            <Link to="/register?role=ideator" className="w-full md:w-auto">
               <Button 
                 size="lg"
-                className="text-base font-medium px-8 py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:-translate-y-0.5 transition-all"
+                className="w-full md:w-auto text-sm md:text-base font-medium px-6 md:px-8 py-5 md:py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:-translate-y-0.5 transition-all"
                 style={{ 
                   boxShadow: '0 8px 24px rgba(103, 159, 131, 0.3)'
                 }}
@@ -402,15 +404,15 @@ const Index = () => {
                 Start Your Idea
               </Button>
             </Link>
-            <Link to="/register?role=executor">
+            <Link to="/register?role=executor" className="w-full md:w-auto">
               <Button 
                 size="lg"
-                className="text-base font-medium px-8 py-6 text-white border-2 border-white bg-transparent hover:bg-white/10 hover:-translate-y-0.5 transition-all"
+                className="w-full md:w-auto text-sm md:text-base font-medium px-6 md:px-8 py-5 md:py-6 text-white border-2 border-white bg-transparent hover:bg-white/10 hover:-translate-y-0.5 transition-all"
               >
                 Browse Opportunities
               </Button>
             </Link>
-            <Link to="/exits" className="text-white/80 hover:text-white transition-colors text-sm font-medium group">
+            <Link to="/exits" className="text-white/80 hover:text-white transition-colors text-sm font-medium group mt-2 md:mt-0">
               See Exit Success Stories 
               <span className="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
             </Link>
@@ -420,7 +422,7 @@ const Index = () => {
 
       {/* Section 4: Join Our Marketplace */}
       <section 
-        className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
+        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden"
         style={{ background: 'rgba(15, 43, 56, 0.6)' }}
       >
         <div className="max-w-7xl mx-auto relative z-10">
@@ -428,14 +430,14 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">
               Join 10,000+ Members Building the Future
             </h2>
           </motion.div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             <RoleCard
               icon={Lightbulb}
               title="Ideator"
@@ -479,7 +481,7 @@ const Index = () => {
 
       {/* Section 5: FAQ */}
       <section 
-        className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
+        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden"
         style={{ background: 'rgba(103, 159, 131, 0.08)' }}
       >
         <div className="max-w-4xl mx-auto relative z-10">
@@ -487,12 +489,12 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-20"
+            className="text-center mb-12 md:mb-20"
           >
-            <h2 className="text-3xl md:text-5xl font-bold mb-6" style={{ color: '#194a61' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6" style={{ color: '#194a61' }}>
               Frequently Asked Questions
             </h2>
-            <p className="text-lg leading-relaxed max-w-2xl mx-auto" style={{ color: '#194a61', opacity: 0.8 }}>
+            <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto" style={{ color: '#194a61', opacity: 0.8 }}>
               Everything you need to know about turning your idea into a funded venture
             </p>
           </motion.div>
@@ -529,32 +531,32 @@ const Index = () => {
 
       {/* Section 6: CTA Final */}
       <section 
-        className="px-8 md:px-16 py-24 md:py-32"
+        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32"
         style={{ background: 'rgba(103, 159, 131, 0.12)' }}
       >
         <div className="max-w-7xl mx-auto">
           <div 
-            className="max-w-[900px] mx-auto rounded-3xl p-12 md:p-20 bg-white/5 backdrop-blur-md border border-[#679f83]/20"
+            className="max-w-[900px] mx-auto rounded-2xl md:rounded-3xl p-8 md:p-12 lg:p-20 bg-white/5 backdrop-blur-md border border-[#679f83]/20"
           >
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-6 leading-tight" style={{ color: '#194a61' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 leading-tight" style={{ color: '#194a61' }}>
               Ready to turn ideas into ventures?
             </h2>
-            <p className="text-lg text-center mb-10 leading-relaxed" style={{ color: '#194a61', opacity: 0.85 }}>
+            <p className="text-base md:text-lg text-center mb-8 md:mb-10 leading-relaxed" style={{ color: '#194a61', opacity: 0.85 }}>
               Join Kick Inn today and start your journey from idea to successful venture.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/register?role=ideator">
+            <div className="flex flex-col md:flex-row flex-wrap justify-center gap-3 md:gap-4">
+              <Link to="/register?role=ideator" className="w-full md:w-auto">
                 <Button 
-                  className="px-8 py-6 rounded-lg text-base font-medium text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:-translate-y-0.5 transition-all duration-300"
                   aria-label="Submit your business idea to Kick Inn"
                 >
                   Submit an Idea
                 </Button>
               </Link>
-              <Link to="/register?role=executor">
+              <Link to="/register?role=executor" className="w-full md:w-auto">
                 <Button 
-                  className="px-8 py-6 rounded-lg text-base font-medium border-2 hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:-translate-y-0.5 transition-all duration-300"
                   style={{ 
                     color: '#194a61',
                     borderColor: '#194a61',
@@ -565,9 +567,9 @@ const Index = () => {
                   Join as Executor
                 </Button>
               </Link>
-              <Link to="/register?role=investor">
+              <Link to="/register?role=investor" className="w-full md:w-auto">
                 <Button 
-                  className="px-8 py-6 rounded-lg text-base font-medium border-2 hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:-translate-y-0.5 transition-all duration-300"
                   style={{ 
                     color: '#194a61',
                     borderColor: '#194a61',
@@ -578,10 +580,10 @@ const Index = () => {
                   Explore Deals
                 </Button>
               </Link>
-              <Link to="/exits" className="flex items-center">
+              <Link to="/exits" className="w-full md:w-auto flex items-center">
                 <Button 
                   variant="ghost"
-                  className="px-8 py-6 rounded-lg text-base font-medium hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium hover:-translate-y-0.5 transition-all duration-300"
                   style={{ color: '#679f83' }}
                   aria-label="Browse available acquisitions on Kick Inn"
                 >
@@ -595,7 +597,7 @@ const Index = () => {
 
       {/* Footer */}
       <footer 
-        className="px-8 md:px-16 py-16"
+        className="px-4 md:px-8 lg:px-16 py-12 md:py-16"
         style={{ 
           background: '#0f2b38',
           borderTop: '1px solid rgba(255, 255, 255, 0.1)'
