@@ -32,7 +32,8 @@ const RoleCard = ({
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       whileHover={{ y: -8 }}
-      className="group relative bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-emerald-400/50 hover:shadow-[0_8px_30px_rgba(16,185,129,0.3)] transition-all duration-300"
+      className="group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:border-emerald-400/50 hover:shadow-[0_8px_30px_rgba(16,185,129,0.3)] transition-all duration-300"
+      style={{ background: 'rgba(15, 43, 56, 0.7)' }}
       aria-label={`${title} role with ${memberCount}`}
     >
       {/* Member Count Badge - Top Right */}
