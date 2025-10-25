@@ -53,7 +53,7 @@ const AdminDashboard = () => {
         .eq("user_id", user.id)
         .maybeSingle();
 
-      if (error || !roles || roles.role !== "admin") {
+      if (error || !roles || (roles.role as string) !== "admin") {
         toast.error("Access denied. Admin privileges required.");
         navigate("/dashboard");
         return;
