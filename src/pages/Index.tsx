@@ -518,86 +518,53 @@ const Index = () => {
       {/* Section 6: CTA Final */}
       <section 
         className="px-8 md:px-16 py-24"
-        style={{ background: 'rgba(103, 159, 131, 0.12)' }}
+        style={{ background: 'linear-gradient(to bottom right, #0f172a, #134e4a)' }}
       >
         <div className="max-w-7xl mx-auto">
           <div 
-            className="max-w-[900px] mx-auto rounded-3xl p-12 md:p-20 backdrop-blur-md"
-            style={{
-              background: 'rgba(103, 159, 131, 0.15)',
-              border: '1px solid rgba(103, 159, 131, 0.3)'
-            }}
+            className="max-w-[900px] mx-auto rounded-3xl p-12 md:p-20 backdrop-blur-md border border-white/10"
           >
             <h2 className="text-3xl md:text-[44px] font-bold text-white text-center mb-6 leading-tight">
               Ready to turn ideas into ventures?
             </h2>
-            <p className="text-lg text-white/80 text-center mb-10 leading-relaxed">
+            <p className="text-lg text-slate-300 text-center mb-10 leading-relaxed">
               Join Kick Inn today and start your journey from idea to successful venture.
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/register?role=ideator">
                 <Button 
-                  className="px-8 py-6 rounded-lg text-base font-medium text-white transition-all duration-300"
-                  style={{ background: '#194a61' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#23698a';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = '#194a61';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
+                  className="px-8 py-6 rounded-lg text-base font-medium text-white bg-emerald-600 hover:bg-emerald-500 transition-all duration-300"
+                  aria-label="Submit your business idea to Kick Inn"
                 >
                   Submit an Idea
                 </Button>
               </Link>
               <Link to="/register?role=executor">
                 <Button 
-                  className="px-8 py-6 rounded-lg text-base font-medium text-white transition-all duration-300"
-                  style={{ background: '#679f83' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#86b39c';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = '#679f83';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
+                  variant="outline"
+                  className="px-8 py-6 rounded-lg text-base font-medium text-white border-2 border-white hover:bg-white/10 transition-all duration-300"
+                  aria-label="Join Kick Inn as an Executor to build MVPs"
                 >
                   Join as Executor
                 </Button>
               </Link>
               <Link to="/register?role=investor">
                 <Button 
-                  className="px-8 py-6 rounded-lg text-base font-medium text-white transition-all duration-300"
-                  style={{ background: '#23698a' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.opacity = '0.9';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.opacity = '1';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
+                  variant="outline"
+                  className="px-8 py-6 rounded-lg text-base font-medium text-white border-2 border-white hover:bg-white/10 transition-all duration-300"
+                  aria-label="Explore investment deals on Kick Inn"
                 >
                   Explore Deals
                 </Button>
               </Link>
-              <Link to="/register?role=buyer">
+              <Link to="/exits" className="flex items-center">
                 <Button 
-                  className="px-8 py-6 rounded-lg text-base font-medium transition-all duration-300"
-                  style={{ background: '#86b39c', color: '#0f2b38' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#679f83';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = '#86b39c';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
+                  variant="ghost"
+                  className="px-8 py-6 rounded-lg text-base font-medium text-emerald-300 hover:text-emerald-200 transition-all duration-300"
+                  aria-label="Browse available acquisitions on Kick Inn"
                 >
-                  Buy Your App
+                  Browse Acquisitions
                 </Button>
               </Link>
             </div>

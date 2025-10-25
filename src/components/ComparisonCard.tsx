@@ -24,8 +24,7 @@ const ComparisonCard = ({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.15 }}
-      className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 hover:border-emerald-400/30 transition-all duration-300"
-      style={{ background: 'rgba(15, 43, 56, 0.6)' }}
+      className="bg-slate-900 backdrop-blur-md border border-slate-700 rounded-2xl p-6 hover:border-emerald-400/30 transition-all duration-300"
     >
       {/* Title */}
       <h3 className="text-xl font-bold text-white mb-6 text-center">{title}</h3>
@@ -34,31 +33,31 @@ const ComparisonCard = ({
       <div className="grid md:grid-cols-2 gap-6">
         {/* Traditional VC - Left */}
         <div className="space-y-3">
-          <div className="flex items-center gap-2 text-red-400 mb-3">
+          <div className="flex items-center gap-2 text-red-300 mb-3">
             <X className="w-5 h-5 flex-shrink-0" />
             <span className="text-sm font-semibold">Traditional VC</span>
           </div>
           
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center flex-shrink-0">
-              <OldIcon className="w-5 h-5 text-red-400" />
+              <OldIcon className="w-6 h-6 text-red-300" />
             </div>
-            <p className="text-sm text-white/70 leading-relaxed">{oldWay}</p>
+            <p className="text-sm text-slate-200 leading-relaxed">{oldWay}</p>
           </div>
         </div>
 
         {/* Kick Inn - Right */}
         <div className="space-y-3">
-          <div className="flex items-center gap-2 text-emerald-400 mb-3">
+          <div className="flex items-center gap-2 text-emerald-300 mb-3">
             <Check className="w-5 h-5 flex-shrink-0" />
             <span className="text-sm font-semibold">Kick Inn</span>
           </div>
           
           <div className="flex items-start gap-3">
             <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
-              <NewIcon className="w-5 h-5 text-emerald-400" />
+              <NewIcon className="w-6 h-6 text-emerald-300" />
             </div>
-            <p className="text-sm text-white/70 leading-relaxed">{kickInnWay}</p>
+            <p className="text-sm text-slate-200 leading-relaxed">{kickInnWay}</p>
           </div>
         </div>
       </div>
