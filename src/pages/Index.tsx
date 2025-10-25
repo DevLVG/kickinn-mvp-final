@@ -8,7 +8,7 @@ import FeatureCard from "@/components/FeatureCard";
 import RoleCard from "@/components/RoleCard";
 import ProcessStep from "@/components/ProcessStep";
 import StatCard from "@/components/StatCard";
-import { Twitter, Linkedin, Send, Zap, Users, TrendingUp, CheckCircle, DollarSign, MessageSquarePlus, Code, Target } from "lucide-react";
+import { Twitter, Linkedin, Send, Zap, Users, TrendingUp, CheckCircle, DollarSign, MessageSquarePlus, Code, Target, Lightbulb, Wrench, Building2 } from "lucide-react";
 
 const Index = () => {
   return (
@@ -244,40 +244,60 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section 3: Community Pillars */}
+      {/* Section 3: Join Our Marketplace */}
       <section 
         className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
         style={{ background: 'rgba(25, 74, 97, 0.5)' }}
       >
         <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-20">
-            Our Community Pillars
-          </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Join 10,000+ Members Building the Future
+            </h2>
+          </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <RoleCard
-              icon="💡"
+              icon={Lightbulb}
               title="Ideator"
-              description="Submit problems you see every day. AI validates, Executors build. You earn 10% equity tokens."
-              memberCount="5,200 members"
+              description="Submit ideas, earn equity tokens"
+              memberCount="5.2K members"
+              ctaText="Submit Your Idea"
+              ctaLink="/register?role=ideator"
+              index={0}
             />
             <RoleCard
-              icon="🛠️"
+              icon={Wrench}
               title="Executor"
-              description="Build validated MVPs. Get matched by AI based on your skills. Earn 35% equity tokens for milestone delivery."
-              memberCount="3,100 members"
+              description="Build MVPs, get paid on-chain"
+              memberCount="3.1K members"
+              badge="🔥 Hiring"
+              ctaText="Browse Projects"
+              ctaLink="/register?role=executor"
+              index={1}
             />
             <RoleCard
-              icon="💰"
+              icon={TrendingUp}
               title="Investor"
-              description="Fund post-MVP ventures with traction. Receive 25% equity tokens. Exit in 12-36 months via acquisition or DEX."
-              memberCount="1,500 members"
+              description="Fund ventures, exit in 12-36mo"
+              memberCount="1.8K members"
+              ctaText="See Deals"
+              ctaLink="/register?role=investor"
+              index={2}
             />
             <RoleCard
-              icon="🏢"
+              icon={Building2}
               title="Buyer"
-              description="Acquire exit-ready digital ventures with proven traction. Access code, users, revenue. Full due diligence support."
+              description="Acquire revenue-ready businesses"
               memberCount="200+ acquisitions"
+              ctaText="View Exits"
+              ctaLink="/register?role=buyer"
+              index={3}
             />
           </div>
         </div>
