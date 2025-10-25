@@ -8,7 +8,7 @@ import FeatureCard from "@/components/FeatureCard";
 import RoleCard from "@/components/RoleCard";
 import ProcessStep from "@/components/ProcessStep";
 import StatCard from "@/components/StatCard";
-import { Twitter, Linkedin, Send, Zap, Users, TrendingUp, CheckCircle, DollarSign } from "lucide-react";
+import { Twitter, Linkedin, Send, Zap, Users, TrendingUp, CheckCircle, DollarSign, MessageSquarePlus, Code, Target } from "lucide-react";
 
 const Index = () => {
   return (
@@ -285,31 +285,146 @@ const Index = () => {
 
       {/* Section 4: How It Works */}
       <section 
-        className="px-8 md:px-16 py-24"
+        className="px-8 md:px-16 py-24 relative overflow-hidden"
         style={{ background: 'rgba(15, 43, 56, 0.6)' }}
+        aria-label="Platform process timeline"
       >
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-20">
-            How It Works
-          </h2>
+        {/* Subtle grid pattern */}
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-5"
+          style={{
+            backgroundImage: `linear-gradient(#679f83 1px, transparent 1px),
+                             linear-gradient(90deg, #679f83 1px, transparent 1px)`,
+            backgroundSize: '40px 40px'
+          }}
+        />
+
+        <div className="max-w-7xl mx-auto relative z-10">
+          {/* Headline */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              How Kick Inn Works
+            </h2>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              From idea to exit-ready venture in 4 automated stages
+            </p>
+          </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-12">
+          {/* Process Timeline - Desktop */}
+          <div className="hidden md:flex gap-8 mb-16 relative">
             <ProcessStep
-              number="1"
-              title="Submit"
-              description="Real-world problems via voice, video, or text. AI validates market depth, urgency, uniqueness."
+              icon={MessageSquarePlus}
+              iconColor="#14b8a6"
+              title="Submit Your Idea"
+              description="Answer 5 questions. Our AI validates market fit in 48 hours."
+              microStat="2.4K ideas submitted/month"
+              index={0}
             />
             <ProcessStep
-              number="2"
-              title="Build"
-              description="AI matches Executors to validated ideas. MVP built with smart contract milestones. No founder involvement."
+              icon={Code}
+              iconColor="#10b981"
+              title="Executors Build MVP"
+              description="Vetted builders compete to develop your prototype on-chain equity."
+              microStat="Avg. 90 days to launch"
+              index={1}
             />
             <ProcessStep
-              number="3"
-              title="Fund & Exit"
-              description="Investors fund post-MVP. Ventures exit in 12-36 months via acquisition or token trading. All stakeholders earn proportional payouts."
+              icon={TrendingUp}
+              iconColor="#3b82f6"
+              title="Investors Back It"
+              description="Liquid token deals with transparent terms. No pitch deck needed."
+              microStat="$250K avg. seed round"
+              index={2}
+            />
+            <ProcessStep
+              icon={Target}
+              iconColor="#a855f7"
+              title="Buyers Acquire"
+              description="Revenue-ready businesses with clear due diligence. Exit in 18mo avg."
+              microStat="180 exits completed"
+              index={3}
+              isLast
             />
           </div>
+
+          {/* Process Timeline - Mobile */}
+          <div className="md:hidden space-y-8 mb-16">
+            <ProcessStep
+              icon={MessageSquarePlus}
+              iconColor="#14b8a6"
+              title="Submit Your Idea"
+              description="Answer 5 questions. Our AI validates market fit in 48 hours."
+              microStat="2.4K ideas submitted/month"
+              index={0}
+              isLast
+            />
+            <ProcessStep
+              icon={Code}
+              iconColor="#10b981"
+              title="Executors Build MVP"
+              description="Vetted builders compete to develop your prototype on-chain equity."
+              microStat="Avg. 90 days to launch"
+              index={1}
+              isLast
+            />
+            <ProcessStep
+              icon={TrendingUp}
+              iconColor="#3b82f6"
+              title="Investors Back It"
+              description="Liquid token deals with transparent terms. No pitch deck needed."
+              microStat="$250K avg. seed round"
+              index={2}
+              isLast
+            />
+            <ProcessStep
+              icon={Target}
+              iconColor="#a855f7"
+              title="Buyers Acquire"
+              description="Revenue-ready businesses with clear due diligence. Exit in 18mo avg."
+              microStat="180 exits completed"
+              index={3}
+              isLast
+            />
+          </div>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center items-center gap-4"
+          >
+            <Link to="/register?role=ideator">
+              <Button 
+                size="lg"
+                className="text-base font-medium px-8 py-6 text-white"
+                style={{ 
+                  background: 'linear-gradient(to right, #10b981, #14b8a6)',
+                  boxShadow: '0 8px 24px rgba(16, 185, 129, 0.3)'
+                }}
+              >
+                Start Your Idea
+              </Button>
+            </Link>
+            <Link to="/register?role=executor">
+              <Button 
+                size="lg"
+                variant="outline"
+                className="text-base font-medium px-8 py-6 text-white border-2 border-white/30 hover:bg-white/10"
+              >
+                Browse Opportunities
+              </Button>
+            </Link>
+            <Link to="/exits" className="text-white/80 hover:text-white transition-colors text-sm font-medium group">
+              See Exit Success Stories 
+              <span className="inline-block ml-1 transition-transform group-hover:translate-x-1">→</span>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
