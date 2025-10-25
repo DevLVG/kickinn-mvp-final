@@ -40,7 +40,7 @@ const FAQItem = ({ question, answer, index }: FAQItemProps) => {
         transition={{ duration: 0.3 }}
         className="overflow-hidden"
       >
-        <p className="text-white/70 pb-6 leading-relaxed">{answer}</p>
+        <p className="text-white/80 pb-6 leading-relaxed">{answer}</p>
       </motion.div>
     </motion.div>
   );

@@ -72,7 +72,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-lg text-white/80 leading-relaxed max-w-xl"
+                className="text-lg text-white/85 leading-relaxed max-w-xl"
               >
                 AI validates your concept. Executors build the MVP. Investors fund it. You keep equity.
               </motion.p>
@@ -180,9 +180,9 @@ const Index = () => {
               transition={{ delay: 0.1 }}
               className="flex flex-col items-center text-center"
             >
-              <CheckCircle className="h-10 w-10 text-[#4ade80] mb-3" />
+              <CheckCircle className="h-10 w-10 text-[#10b981] mb-3" />
               <div className="text-3xl font-bold text-white mb-1">2,400+</div>
-              <div className="text-white/70">Ideas Validated</div>
+              <div className="text-white/80">Ideas Validated</div>
             </motion.div>
             
             <motion.div
@@ -194,7 +194,7 @@ const Index = () => {
             >
               <DollarSign className="h-10 w-10 text-[#679f83] mb-3" />
               <div className="text-3xl font-bold text-white mb-1">$12M+</div>
-              <div className="text-white/70">Funded</div>
+              <div className="text-white/80">Funded</div>
             </motion.div>
             
             <motion.div
@@ -206,7 +206,7 @@ const Index = () => {
             >
               <TrendingUp className="h-10 w-10 text-[#60a5fa] mb-3" />
               <div className="text-3xl font-bold text-white mb-1">180</div>
-              <div className="text-white/70">Exits Completed</div>
+              <div className="text-white/80">Exits Completed</div>
             </motion.div>
           </div>
         </div>
@@ -302,7 +302,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
               How Kick Inn Works
             </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+            <p className="text-lg text-white/80 max-w-2xl mx-auto">
               From idea to exit-ready venture in 4 automated stages
             </p>
           </motion.div>

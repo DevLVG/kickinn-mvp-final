@@ -66,7 +66,7 @@ const RoleCard = ({
       <h3 className="text-2xl font-bold text-white mb-2">{title}</h3>
 
       {/* Description */}
-      <p className="text-white/70 text-sm mb-6 line-clamp-1">{description}</p>
+      <p className="text-white/80 text-sm mb-6 line-clamp-1">{description}</p>
 
       {/* CTA Button */}
       <Link to={ctaLink}>
