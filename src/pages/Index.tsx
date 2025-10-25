@@ -543,7 +543,7 @@ const Index = () => {
               <Link to="/register?role=executor">
                 <Button 
                   variant="outline"
-                  className="px-8 py-6 rounded-lg text-base font-medium text-white border-2 border-white hover:bg-white/10 transition-all duration-300"
+                  className="px-8 py-6 rounded-lg text-base font-medium text-white border-2 border-white bg-transparent hover:bg-white/10 transition-all duration-300"
                   aria-label="Join Kick Inn as an Executor to build MVPs"
                 >
                   Join as Executor
@@ -552,7 +552,7 @@ const Index = () => {
               <Link to="/register?role=investor">
                 <Button 
                   variant="outline"
-                  className="px-8 py-6 rounded-lg text-base font-medium text-white border-2 border-white hover:bg-white/10 transition-all duration-300"
+                  className="px-8 py-6 rounded-lg text-base font-medium text-white border-2 border-white bg-transparent hover:bg-white/10 transition-all duration-300"
                   aria-label="Explore investment deals on Kick Inn"
                 >
                   Explore Deals
