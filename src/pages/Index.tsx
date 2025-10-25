@@ -480,7 +480,57 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section 4: Join Our Marketplace */}
+      {/* Section 5: FAQ */}
+      <section 
+        className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
+        style={{ background: 'rgba(15, 43, 56, 0.5)' }}
+      >
+        <div className="max-w-4xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              Everything you need to know about turning your idea into a funded venture
+            </p>
+          </motion.div>
+          
+          <div className="space-y-0">
+            <FAQItem
+              question="Do I need to be technical to submit an idea?"
+              answer="No technical skills required. Our AI validates your concept and matches it with experienced Executors who handle all the building. You just need a real problem worth solving."
+              index={0}
+            />
+            <FAQItem
+              question="How long does the validation process take?"
+              answer="AI validation completes in 48 hours. You'll receive a detailed scorecard on market fit, urgency, and uniqueness. If approved, Executor matching begins immediately."
+              index={1}
+            />
+            <FAQItem
+              question="What equity do I keep as an Ideator?"
+              answer="Ideators receive 10% equity tokens. Executors get 35%, Investors 25%, and the platform retains 30% for operations and liquidity. All allocations are tokenized and transparent."
+              index={2}
+            />
+            <FAQItem
+              question="When can I exit my investment?"
+              answer="Target exit window is 12-36 months via acquisition or secondary token trading. Investors receive liquidity through DEX listings or strategic buyer acquisitions."
+              index={3}
+            />
+            <FAQItem
+              question="What happens if the MVP fails?"
+              answer="Executors are only paid for completed milestones via smart contracts. Investors fund post-MVP with traction, reducing early-stage risk. Our 78% success rate ensures quality validation."
+              index={4}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: CTA Final */}
       <section 
         className="px-8 md:px-16 py-24"
         style={{ background: 'linear-gradient(to bottom right, #0f172a, #134e4a)' }}
@@ -533,56 +583,6 @@ const Index = () => {
                 </Button>
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section 5: FAQ */}
-      <section 
-        className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
-        style={{ background: 'rgba(15, 43, 56, 0.5)' }}
-      >
-        <div className="max-w-4xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">
-              Everything you need to know about turning your idea into a funded venture
-            </p>
-          </motion.div>
-          
-          <div className="space-y-0">
-            <FAQItem
-              question="Do I need to be technical to submit an idea?"
-              answer="No technical skills required. Our AI validates your concept and matches it with experienced Executors who handle all the building. You just need a real problem worth solving."
-              index={0}
-            />
-            <FAQItem
-              question="How long does the validation process take?"
-              answer="AI validation completes in 48 hours. You'll receive a detailed scorecard on market fit, urgency, and uniqueness. If approved, Executor matching begins immediately."
-              index={1}
-            />
-            <FAQItem
-              question="What equity do I keep as an Ideator?"
-              answer="Ideators receive 10% equity tokens. Executors get 35%, Investors 25%, and the platform retains 30% for operations and liquidity. All allocations are tokenized and transparent."
-              index={2}
-            />
-            <FAQItem
-              question="When can I exit my investment?"
-              answer="Target exit window is 12-36 months via acquisition or secondary token trading. Investors receive liquidity through DEX listings or strategic buyer acquisitions."
-              index={3}
-            />
-            <FAQItem
-              question="What happens if the MVP fails?"
-              answer="Executors are only paid for completed milestones via smart contracts. Investors fund post-MVP with traction, reducing early-stage risk. Our 78% success rate ensures quality validation."
-              index={4}
-            />
           </div>
         </div>
       </section>
