@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import { toast } from "sonner";
 import VentureDetailHeader from "@/components/investor/venture-detail/VentureDetailHeader";
 import VentureSummaryCards from "@/components/investor/venture-detail/VentureSummaryCards";
 import VentureTabNavigation from "@/components/investor/venture-detail/VentureTabNavigation";
@@ -12,7 +15,6 @@ import VentureNotificationsTab from "@/components/investor/venture-detail/Ventur
 import VentureActionPanel from "@/components/investor/venture-detail/VentureActionPanel";
 import RedemptionModal from "@/components/investor/RedemptionModal";
 import RefundModal from "@/components/investor/RefundModal";
-import { toast } from "sonner";
 
 const VentureDetail = () => {
   const { venture_id } = useParams();
@@ -29,6 +31,8 @@ const VentureDetail = () => {
   const [activeTab, setActiveTab] = useState<'overview' | 'traction' | 'milestones' | 'liquidity' | 'notifications'>('overview');
   const [showRedemptionModal, setShowRedemptionModal] = useState(false);
   const [showRefundModal, setShowRefundModal] = useState(false);
+  const [investmentData, setInvestmentData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   // Mock venture data
   const venture = {
@@ -207,14 +211,78 @@ const VentureDetail = () => {
     toast.success('Link copied to clipboard!');
   };
 
-  // Simulated WebSocket for real-time updates
+  // Fetch investment data and subscribe to real-time updates
   useEffect(() => {
-    console.log('WebSocket connected for venture:', venture_id);
-    // In production, connect to WebSocket here
+    const fetchInvestmentData = async () => {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+          setLoading(false);
+          return;
+        }
+
+        const { data, error } = await supabase
+          .from('investments')
+          .select('*')
+          .eq('venture_id', venture_id)
+          .eq('investor_id', user.id)
+          .single();
+
+        if (error && error.code !== 'PGRST116') {
+          console.error('Error fetching investment:', error);
+          toast.error('Failed to load investment data');
+        } else if (data) {
+          setInvestmentData(data);
+        }
+      } catch (err) {
+        console.error('Error:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchInvestmentData();
+
+    // Subscribe to real-time updates
+    const channel = supabase
+      .channel(`investment-${venture_id}`)
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'investments',
+          filter: `venture_id=eq.${venture_id}`
+        },
+        (payload) => {
+          console.log('Real-time investment update:', payload);
+          if (payload.eventType === 'UPDATE' || payload.eventType === 'INSERT') {
+            setInvestmentData(payload.new);
+            toast.success('Investment data updated');
+          }
+        }
+      )
+      .subscribe();
+
     return () => {
-      console.log('WebSocket disconnected');
+      supabase.removeChannel(channel);
     };
   }, [venture_id]);
+
+  if (loading) {
+    return (
+      <DashboardLayout
+        activeRole={activeRole}
+        userRoles={userRoles}
+        onRoleChange={() => {}}
+        user={user}
+      >
+        <div className="flex items-center justify-center h-96">
+          <LoadingSpinner />
+        </div>
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout
