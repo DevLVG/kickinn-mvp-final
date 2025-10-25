@@ -503,7 +503,7 @@ const Index = () => {
               <Button 
                 size="lg"
                 variant="outline"
-                className="text-base font-medium px-8 py-6 text-white border-2 border-white/30 hover:bg-white/10"
+                className="text-base font-medium px-8 py-6 text-slate-900 border-2 border-slate-900 hover:bg-slate-100"
               >
                 See the Difference
               </Button>
