@@ -67,14 +67,15 @@ const ProcessStep = ({
         viewport={{ once: true }}
         transition={{ delay: index * 0.15 + 0.2 }}
         whileHover={{ scale: 1.05 }}
-        className="text-center px-4 py-6 rounded-xl backdrop-blur-sm border border-white/10 transition-all duration-300 bg-slate-800"
+        className="text-center px-4 py-6 rounded-2xl backdrop-blur-md border border-[#679f83]/20 transition-all duration-300 bg-white/5 hover:border-[#679f83]/40 hover:shadow-[0_8px_30px_hsla(150,25%,52%,0.3)]"
       >
         <h3 className="text-xl font-bold text-white mb-3">{title}</h3>
         <p className="text-slate-200 text-sm leading-relaxed mb-4 min-h-[60px]">
           {description}
         </p>
         <div 
-          className="text-xs font-semibold px-3 py-1.5 rounded-full inline-block bg-slate-700 text-slate-200"
+          className="text-xs font-semibold px-3 py-1.5 rounded-full inline-block text-white/85"
+          style={{ background: 'rgba(103, 159, 131, 0.2)' }}
         >
           {microStat}
         </div>
