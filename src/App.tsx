@@ -40,6 +40,7 @@ import Privacy from "./pages/PrivacyPolicy";
 import Notifications from "./pages/Notifications";
 import Settings from "./pages/Settings";
 import AdminDashboard from "./pages/AdminDashboard";
+import AdminUsers from "./pages/AdminUsers";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -98,6 +99,7 @@ const App = () => (
           
           {/* Admin Routes */}
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
           
           {/* Static Pages */}
           <Route path="/about" element={<About />} />
