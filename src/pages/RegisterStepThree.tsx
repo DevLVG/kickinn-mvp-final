@@ -35,29 +35,106 @@ const RegisterStepThree = () => {
     checkSession();
   }, [navigate]);
 
+  const logWalletConnection = async (
+    address: string,
+    type: 'metamask' | 'ton',
+    action: 'connected' | 'rejected' | 'failed',
+    errorMessage?: string
+  ) => {
+    try {
+      const { session } = await getSession();
+      if (!session?.user) return;
+
+      await supabase.from('wallet_connection_logs').insert({
+        user_id: session.user.id,
+        wallet_address: address,
+        wallet_type: type,
+        action,
+        user_agent: navigator.userAgent,
+        error_message: errorMessage || null,
+      });
+    } catch (err) {
+      console.error('Failed to log wallet connection:', err);
+    }
+  };
+
   const connectMetaMask = async () => {
     const ethereum = (window as any).ethereum;
     if (typeof ethereum === 'undefined') {
-      setToast({ message: 'MetaMask not installed. Install MetaMask', type: 'error' });
+      setToast({ message: 'MetaMask not installed. Install MetaMask extension', type: 'error' });
       return;
     }
 
     setIsLoading(true);
     try {
+      // Step 1: Request accounts
       const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
       
-      if (accounts && accounts[0]) {
-        const address = accounts[0];
+      if (!accounts || !accounts[0]) {
+        throw new Error('No accounts found');
+      }
+
+      const address = accounts[0];
+
+      // Step 2: Check if wallet is already connected to another account
+      const { data: existingWallet } = await supabase
+        .from('wallets')
+        .select('user_id')
+        .eq('wallet_address', address)
+        .single();
+
+      if (existingWallet) {
+        const { session } = await getSession();
+        if (existingWallet.user_id !== session?.user.id) {
+          setToast({ 
+            message: 'This wallet is already connected to another account', 
+            type: 'error' 
+          });
+          await logWalletConnection(address, 'metamask', 'failed', 'Wallet already linked to another account');
+          setIsLoading(false);
+          return;
+        }
+      }
+
+      // Step 3: Verify wallet ownership with signature
+      const message = `Kick Inn - Verify wallet ownership\n\nWallet: ${address}\nTimestamp: ${new Date().toISOString()}`;
+      
+      try {
+        const signature = await ethereum.request({
+          method: 'personal_sign',
+          params: [message, address],
+        });
+
+        if (!signature) {
+          throw new Error('Signature failed');
+        }
+
+        // Success
         setWalletAddress(address);
         setWalletType('metamask');
         setIsConnected(true);
         setToast({ message: 'Wallet connected successfully!', type: 'success' });
+        await logWalletConnection(address, 'metamask', 'connected');
+
+      } catch (signError: any) {
+        if (signError.code === 4001) {
+          setToast({ 
+            message: 'Signature required to verify wallet ownership', 
+            type: 'error' 
+          });
+          await logWalletConnection(address, 'metamask', 'rejected', 'User rejected signature request');
+        } else {
+          throw signError;
+        }
       }
+
     } catch (error: any) {
       if (error.code === 4001) {
         setToast({ message: 'Wallet connection was rejected. Try again?', type: 'error' });
+        await logWalletConnection('', 'metamask', 'rejected', 'User rejected connection');
       } else {
         setToast({ message: 'Failed to connect wallet. Please try again.', type: 'error' });
+        await logWalletConnection('', 'metamask', 'failed', error.message || 'Unknown error');
       }
     } finally {
       setIsLoading(false);
@@ -65,10 +142,16 @@ const RegisterStepThree = () => {
   };
 
   const connectTON = async () => {
+    // TON Connect integration to be implemented
+    // Reference: https://docs.ton.org/develop/dapps/ton-connect/overview
     setToast({ message: 'TON Wallet integration coming soon!', type: 'info' });
+    await logWalletConnection('', 'ton', 'failed', 'TON integration not yet implemented');
   };
 
-  const handleDisconnect = () => {
+  const handleDisconnect = async () => {
+    if (walletAddress && walletType) {
+      await logWalletConnection(walletAddress, walletType, 'rejected', 'User disconnected before saving');
+    }
     setIsConnected(false);
     setWalletAddress('');
     setWalletType(null);
@@ -150,7 +233,7 @@ const RegisterStepThree = () => {
           </Link>
           
           <h1 className="text-3xl font-bold text-white text-center mb-3">Connect Your Wallet (Optional)</h1>
-          <p className="text-sm text-white/70 text-center mb-10">Connect now or later. Required to claim tokens or fund ventures.</p>
+          <p className="text-sm text-white/70 text-center mb-10">Optional now. Required to claim tokens or fund ventures.</p>
           
           {!isConnected ? (
             <div className="space-y-4 mb-6">

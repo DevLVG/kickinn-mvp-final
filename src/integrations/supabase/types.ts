@@ -56,6 +56,42 @@ export type Database = {
         }
         Relationships: []
       }
+      wallet_connection_logs: {
+        Row: {
+          action: string
+          created_at: string
+          error_message: string | null
+          id: string
+          ip_address: string | null
+          user_agent: string | null
+          user_id: string
+          wallet_address: string
+          wallet_type: string
+        }
+        Insert: {
+          action: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          ip_address?: string | null
+          user_agent?: string | null
+          user_id: string
+          wallet_address: string
+          wallet_type: string
+        }
+        Update: {
+          action?: string
+          created_at?: string
+          error_message?: string | null
+          id?: string
+          ip_address?: string | null
+          user_agent?: string | null
+          user_id?: string
+          wallet_address?: string
+          wallet_type?: string
+        }
+        Relationships: []
+      }
       wallets: {
         Row: {
           connected_at: string
