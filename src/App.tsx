@@ -19,6 +19,7 @@ import ExecutorActive from "./pages/ExecutorActive";
 import ExecutorContracts from "./pages/ExecutorContracts";
 import ExecutorContractDetail from "./pages/ExecutorContractDetail";
 import ExecutorEarnings from "./pages/ExecutorEarnings";
+import ExecutorReputation from "./pages/ExecutorReputation";
 import VentureWorkspace from "./pages/VentureWorkspace";
 import Deals from "./pages/Deals";
 import DealDetail from "./pages/DealDetail";
@@ -75,7 +76,7 @@ const App = () => (
           {/* Placeholder routes - Coming Soon */}
           <Route path="/ventures" element={<ComingSoon />} />
           <Route path="/executor/earnings" element={<ExecutorEarnings />} />
-          <Route path="/executor/reputation" element={<ComingSoon />} />
+          <Route path="/executor/reputation" element={<ExecutorReputation />} />
           <Route path="/exits" element={<Exits />} />
           <Route path="/exits/:id" element={<ExitDealDetail />} />
           <Route path="/exits/:id/offer" element={<MakeOffer />} />
