@@ -37,6 +37,7 @@ import MakeOffer from "./pages/MakeOffer";
 import ComingSoon from "./pages/ComingSoon";
 import Terms from "./pages/TermsOfService";
 import Privacy from "./pages/PrivacyPolicy";
+import Notifications from "./pages/Notifications";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -88,6 +89,9 @@ const App = () => (
           <Route path="/exits/:id/offer" element={<MakeOffer />} />
           <Route path="/buyer/offers" element={<ComingSoon />} />
           <Route path="/buyer/acquired" element={<ComingSoon />} />
+          
+          {/* Notifications */}
+          <Route path="/notifications" element={<Notifications />} />
           
           {/* Static Pages */}
           <Route path="/about" element={<About />} />

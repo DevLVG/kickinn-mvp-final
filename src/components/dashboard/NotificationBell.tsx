@@ -1,48 +1,63 @@
 import { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Bell } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Notification {
   id: string;
-  icon: string;
+  type: string;
   title: string;
   message: string;
-  timeAgo: string;
-  unread: boolean;
+  created_at: string;
+  read: boolean;
 }
-
-const mockNotifications: Notification[] = [
-  {
-    id: '1',
-    icon: '✅',
-    title: 'Idea Validated',
-    message: 'Your submission "Logistics Platform" passed AI validation',
-    timeAgo: '5 minutes ago',
-    unread: true,
-  },
-  {
-    id: '2',
-    icon: '💰',
-    title: 'Funding Opened',
-    message: 'ThreadCycle venture is now accepting investments',
-    timeAgo: '2 hours ago',
-    unread: true,
-  },
-  {
-    id: '3',
-    icon: '🎉',
-    title: 'Milestone Completed',
-    message: 'Design phase completed for LogiTrack',
-    timeAgo: '1 day ago',
-    unread: false,
-  },
-];
-
 const NotificationBell = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-  const [notifications, setNotifications] = useState(mockNotifications);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const unreadCount = notifications.filter(n => n.unread).length;
+  const unreadCount = notifications.filter(n => !n.read).length;
+
+  useEffect(() => {
+    fetchNotifications();
+
+    // Subscribe to real-time notifications
+    const channel = supabase
+      .channel('bell-notifications')
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'notifications'
+        },
+        (payload) => {
+          setNotifications(prev => [payload.new as Notification, ...prev.slice(0, 4)]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  const fetchNotifications = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    const { data } = await supabase
+      .from('notifications')
+      .select('*')
+      .eq('user_id', user.id)
+      .order('created_at', { ascending: false })
+      .limit(5);
+
+    if (data) {
+      setNotifications(data);
+    }
+  };
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -55,8 +70,41 @@ const NotificationBell = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const markAllAsRead = () => {
-    setNotifications(notifications.map(n => ({ ...n, unread: false })));
+  const markAllAsRead = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return;
+
+    await supabase
+      .from('notifications')
+      .update({ read: true })
+      .eq('user_id', user.id)
+      .eq('read', false);
+
+    setNotifications(notifications.map(n => ({ ...n, read: true })));
+  };
+
+  const getIcon = (type: string) => {
+    switch (type) {
+      case 'milestone': return '🎯';
+      case 'investment': return '💰';
+      case 'venture': return '🚀';
+      case 'chat': return '💬';
+      case 'system': return '⚙️';
+      default: return '🔔';
+    }
+  };
+
+  const getTimeAgo = (dateString: string) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMins / 60);
+    const diffDays = Math.floor(diffHours / 24);
+
+    if (diffMins < 60) return `${diffMins} minutes ago`;
+    if (diffHours < 24) return `${diffHours} hours ago`;
+    return `${diffDays} days ago`;
   };
 
   return (
@@ -88,12 +136,25 @@ const NotificationBell = () => {
             style={{ borderBottom: '1px solid rgba(0, 0, 0, 0.05)' }}
           >
             <h3 className="text-base font-bold text-primary-dark">Notifications</h3>
-            <button
-              onClick={markAllAsRead}
-              className="text-xs text-secondary-teal hover:underline"
-            >
-              Mark all as read
-            </button>
+            <div className="flex items-center gap-2">
+              {unreadCount > 0 && (
+                <button
+                  onClick={markAllAsRead}
+                  className="text-xs text-secondary-teal hover:underline"
+                >
+                  Mark all as read
+                </button>
+              )}
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  navigate('/notifications');
+                }}
+                className="text-xs text-secondary-teal hover:underline"
+              >
+                View all
+              </button>
+            </div>
           </div>
 
           {/* Notifications List */}
@@ -110,11 +171,15 @@ const NotificationBell = () => {
                   className="flex gap-3 px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors"
                   style={{
                     borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
-                    background: notification.unread ? 'rgba(103, 159, 131, 0.05)' : 'transparent',
+                    background: !notification.read ? 'rgba(103, 159, 131, 0.05)' : 'transparent',
+                  }}
+                  onClick={() => {
+                    setIsOpen(false);
+                    navigate('/notifications');
                   }}
                 >
                   <div className="flex-shrink-0 text-2xl">
-                    {notification.icon}
+                    {getIcon(notification.type)}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-gray-900">
@@ -124,10 +189,10 @@ const NotificationBell = () => {
                       {notification.message}
                     </p>
                     <p className="text-xs text-gray-400 mt-1">
-                      {notification.timeAgo}
+                      {getTimeAgo(notification.created_at)}
                     </p>
                   </div>
-                  {notification.unread && (
+                  {!notification.read && (
                     <div className="w-2 h-2 rounded-full bg-secondary-teal flex-shrink-0 mt-1" />
                   )}
                 </div>

@@ -217,6 +217,78 @@ export type Database = {
         }
         Relationships: []
       }
+      notification_preferences: {
+        Row: {
+          chat_mentions: boolean
+          email_notifications: boolean
+          id: string
+          investment_updates: boolean
+          milestone_updates: boolean
+          push_notifications: boolean
+          updated_at: string
+          user_id: string
+          venture_updates: boolean
+        }
+        Insert: {
+          chat_mentions?: boolean
+          email_notifications?: boolean
+          id?: string
+          investment_updates?: boolean
+          milestone_updates?: boolean
+          push_notifications?: boolean
+          updated_at?: string
+          user_id: string
+          venture_updates?: boolean
+        }
+        Update: {
+          chat_mentions?: boolean
+          email_notifications?: boolean
+          id?: string
+          investment_updates?: boolean
+          milestone_updates?: boolean
+          push_notifications?: boolean
+          updated_at?: string
+          user_id?: string
+          venture_updates?: boolean
+        }
+        Relationships: []
+      }
+      notifications: {
+        Row: {
+          created_at: string
+          data: Json | null
+          id: string
+          link: string | null
+          message: string
+          read: boolean
+          title: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          data?: Json | null
+          id?: string
+          link?: string | null
+          message: string
+          read?: boolean
+          title: string
+          type: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          data?: Json | null
+          id?: string
+          link?: string | null
+          message?: string
+          read?: boolean
+          title?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       opportunity_fit_scores: {
         Row: {
           created_at: string
