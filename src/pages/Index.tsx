@@ -8,6 +8,7 @@ import FeatureCard from "@/components/FeatureCard";
 import RoleCard from "@/components/RoleCard";
 import ProcessStep from "@/components/ProcessStep";
 import StatCard from "@/components/StatCard";
+import FAQItem from "@/components/FAQItem";
 import ComparisonCard from "@/components/ComparisonCard";
 import { Twitter, Linkedin, Send, Zap, Users, TrendingUp, CheckCircle, DollarSign, MessageSquarePlus, Code, Target, Lightbulb, Wrench, Building2, UserX, Lock, Coins, Cpu } from "lucide-react";
 
@@ -212,34 +213,51 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section 2: What is Kick Inn */}
+      {/* Section 2: FAQ */}
       <section 
         className="px-8 md:px-16 py-24 md:py-32 relative overflow-hidden"
         style={{ background: 'rgba(15, 43, 56, 0.5)' }}
       >
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-4">
-            A Virtual Incubator <span className="bg-gradient-primary bg-clip-text text-transparent">Without Founders</span>
-          </h2>
-          <p className="text-lg text-white/70 text-center max-w-[700px] mx-auto mb-20 leading-relaxed">
-            Kick Inn is a founderless, modular venture engine. It turns real-world insights into investable, exit-ready startups through AI orchestration, Executor networks, and tokenized capital.
-          </p>
+        <div className="max-w-4xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+              Everything you need to know about turning your idea into a funded venture
+            </p>
+          </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <FeatureCard
-              icon="🧩"
-              title="Founderless"
-              description="Problems come from the field, not pitch decks"
+          <div className="space-y-0">
+            <FAQItem
+              question="Do I need to be technical to submit an idea?"
+              answer="No technical skills required. Our AI validates your concept and matches it with experienced Executors who handle all the building. You just need a real problem worth solving."
+              index={0}
             />
-            <FeatureCard
-              icon="🪙"
-              title="Tokenized"
-              description="Executors earn and investors engage via liquid tokens"
+            <FAQItem
+              question="How long does the validation process take?"
+              answer="AI validation completes in 48 hours. You'll receive a detailed scorecard on market fit, urgency, and uniqueness. If approved, Executor matching begins immediately."
+              index={1}
             />
-            <FeatureCard
-              icon="⚙️"
-              title="Governed by Code"
-              description="No gatekeepers. Milestones and payouts are AI-verified"
+            <FAQItem
+              question="What equity do I keep as an Ideator?"
+              answer="Ideators receive 10% equity tokens. Executors get 35%, Investors 25%, and the platform retains 30% for operations and liquidity. All allocations are tokenized and transparent."
+              index={2}
+            />
+            <FAQItem
+              question="When can I exit my investment?"
+              answer="Target exit window is 12-36 months via acquisition or secondary token trading. Investors receive liquidity through DEX listings or strategic buyer acquisitions."
+              index={3}
+            />
+            <FAQItem
+              question="What happens if the MVP fails?"
+              answer="Executors are only paid for completed milestones via smart contracts. Investors fund post-MVP with traction, reducing early-stage risk. Our 78% success rate ensures quality validation."
+              index={4}
             />
           </div>
         </div>
