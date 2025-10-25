@@ -15,6 +15,12 @@ export default {
     extend: {
       fontFamily: {
         montserrat: ['Montserrat', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
+      },
+      fontWeight: {
+        normal: '400',
+        medium: '500',
+        bold: '700',
       },
       colors: {
         border: "hsl(var(--border))",
@@ -22,12 +28,30 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        
+        // KICK INN PRIMARY PALETTE
         "primary-dark": "hsl(var(--primary-dark))",
         "secondary-teal": "hsl(var(--secondary-teal))",
         "accent-blue": "hsl(var(--accent-blue))",
         "light-teal": "hsl(var(--light-teal))",
         "dark-navy": "hsl(var(--dark-navy))",
         "neutral-bg": "hsl(var(--neutral-bg))",
+        
+        // STATE COLORS
+        success: "hsl(var(--success))",
+        warning: "hsl(var(--warning))",
+        error: "hsl(var(--error))",
+        info: "hsl(var(--info))",
+        
+        // GRAYS
+        gray: {
+          100: "hsl(var(--gray-100))",
+          300: "hsl(var(--gray-300))",
+          400: "hsl(var(--gray-400))",
+          600: "hsl(var(--gray-600))",
+        },
+        
+        // SHADCN UI MAPPINGS
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -61,6 +85,7 @@ export default {
         'gradient-hero': 'var(--gradient-hero)',
         'gradient-primary': 'var(--gradient-primary)',
         'gradient-light': 'var(--gradient-light)',
+        'gradient-teal-blue': 'var(--gradient-teal-blue)',
         'gradient-accent-overlay': 'var(--gradient-accent-overlay)',
       },
       backdropBlur: {

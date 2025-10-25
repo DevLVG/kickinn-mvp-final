@@ -26,7 +26,7 @@ const FAQItem = ({ question, answer, index }: FAQItemProps) => {
       >
         <h3 className="text-lg font-semibold text-white pr-8">{question}</h3>
         <ChevronDown
-          className={`w-6 h-6 text-emerald-400 flex-shrink-0 transition-transform duration-300 ${
+          className={`w-6 h-6 text-[#679f83] flex-shrink-0 transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
           }`}
         />

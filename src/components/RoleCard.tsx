@@ -32,7 +32,7 @@ const RoleCard = ({
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       whileHover={{ y: -8 }}
-      className="group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:border-emerald-400/50 hover:shadow-[0_8px_30px_rgba(16,185,129,0.3)] transition-all duration-300"
+      className="group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 hover:border-[#679f83]/50 hover:shadow-[0_8px_30px_rgba(103,159,131,0.3)] transition-all duration-300"
       style={{ background: 'rgba(15, 43, 56, 0.7)' }}
       aria-label={`${title} role with ${memberCount}`}
     >
@@ -47,7 +47,7 @@ const RoleCard = ({
         {badge && (
           <Badge 
             variant="secondary" 
-            className="bg-gradient-to-r from-orange-500 to-red-500 text-white font-bold text-xs px-3 py-1"
+            className="bg-gradient-to-r from-[#fb923c] to-[#ef4444] text-white font-bold text-xs px-3 py-1"
           >
             {badge}
           </Badge>
@@ -57,9 +57,9 @@ const RoleCard = ({
       {/* Icon */}
       <motion.div
         whileHover={{ scale: 1.1, rotate: 5 }}
-        className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-400/30"
+        className="w-16 h-16 rounded-full flex items-center justify-center mb-4 bg-gradient-to-br from-[#679f83]/20 to-[#23698a]/20 border border-[#679f83]/30"
       >
-        <Icon className="w-8 h-8 text-emerald-400" />
+        <Icon className="w-8 h-8 text-[#679f83]" />
       </motion.div>
 
       {/* Title */}
@@ -71,17 +71,14 @@ const RoleCard = ({
       {/* CTA Button */}
       <Link to={ctaLink}>
         <Button 
-          className="w-full text-white font-medium transition-all duration-300 group-hover:scale-105"
-          style={{ 
-            background: 'linear-gradient(to right, #10b981, #14b8a6)',
-          }}
+          className="w-full text-white font-medium transition-all duration-300 group-hover:scale-105 bg-gradient-to-r from-[#679f83] to-[#23698a]"
         >
           {ctaText}
         </Button>
       </Link>
 
       {/* Hover gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#679f83]/5 to-[#23698a]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none" />
     </motion.div>
   );
 };

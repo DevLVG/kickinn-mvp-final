@@ -65,7 +65,7 @@ const Index = () => {
                 transition={{ duration: 0.6 }}
                 className="text-4xl md:text-[56px] font-bold text-white leading-tight"
               >
-                Turn Ideas Into Funded Ventures. <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">No Founder Needed.</span>
+                Turn Ideas Into Funded Ventures. <span className="bg-gradient-to-r from-[#679f83] to-[#86b39c] bg-clip-text text-transparent">No Founder Needed.</span>
               </motion.h1>
               
               <motion.p 
@@ -96,8 +96,8 @@ const Index = () => {
                     transition={{ delay: 0.4 + index * 0.1 }}
                     className="flex items-center gap-3"
                   >
-                    <CheckCircle className="h-5 w-5 text-emerald-400 flex-shrink-0" />
-                    <feature.icon className="h-5 w-5 text-teal-400 flex-shrink-0" />
+                    <CheckCircle className="h-5 w-5 text-[#4ade80] flex-shrink-0" />
+                    <feature.icon className="h-5 w-5 text-[#679f83] flex-shrink-0" />
                     <span className="text-white/90">{feature.text}</span>
                   </motion.div>
                 ))}
@@ -117,10 +117,9 @@ const Index = () => {
                   >
                     <Button 
                       size="lg"
-                      className="text-base font-medium px-8 py-6 text-white"
+                      className="text-base font-medium px-8 py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a]"
                       style={{ 
-                        background: 'linear-gradient(to right, #10b981, #14b8a6)',
-                        boxShadow: '0 8px 24px rgba(16, 185, 129, 0.3)'
+                        boxShadow: '0 8px 24px rgba(103, 159, 131, 0.3)'
                       }}
                     >
                       Submit Your Idea Free
@@ -181,7 +180,7 @@ const Index = () => {
               transition={{ delay: 0.1 }}
               className="flex flex-col items-center text-center"
             >
-              <CheckCircle className="h-10 w-10 text-emerald-400 mb-3" />
+              <CheckCircle className="h-10 w-10 text-[#4ade80] mb-3" />
               <div className="text-3xl font-bold text-white mb-1">2,400+</div>
               <div className="text-white/70">Ideas Validated</div>
             </motion.div>
@@ -193,7 +192,7 @@ const Index = () => {
               transition={{ delay: 0.2 }}
               className="flex flex-col items-center text-center"
             >
-              <DollarSign className="h-10 w-10 text-teal-400 mb-3" />
+              <DollarSign className="h-10 w-10 text-[#679f83] mb-3" />
               <div className="text-3xl font-bold text-white mb-1">$12M+</div>
               <div className="text-white/70">Funded</div>
             </motion.div>
@@ -205,7 +204,7 @@ const Index = () => {
               transition={{ delay: 0.3 }}
               className="flex flex-col items-center text-center"
             >
-              <TrendingUp className="h-10 w-10 text-blue-400 mb-3" />
+              <TrendingUp className="h-10 w-10 text-[#60a5fa] mb-3" />
               <div className="text-3xl font-bold text-white mb-1">180</div>
               <div className="text-white/70">Exits Completed</div>
             </motion.div>
@@ -395,10 +394,9 @@ const Index = () => {
             <Link to="/register?role=ideator">
               <Button 
                 size="lg"
-                className="text-base font-medium px-8 py-6 text-white"
+                className="text-base font-medium px-8 py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a]"
                 style={{ 
-                  background: 'linear-gradient(to right, #10b981, #14b8a6)',
-                  boxShadow: '0 8px 24px rgba(16, 185, 129, 0.3)'
+                  boxShadow: '0 8px 24px rgba(103, 159, 131, 0.3)'
                 }}
               >
                 Start Your Idea
@@ -533,7 +531,7 @@ const Index = () => {
       {/* Section 6: CTA Final */}
       <section 
         className="px-8 md:px-16 py-24"
-        style={{ background: 'linear-gradient(to bottom right, #0f172a, #134e4a)' }}
+        style={{ background: 'linear-gradient(to bottom right, #0f2b38, #194a61)' }}
       >
         <div className="max-w-7xl mx-auto">
           <div 
@@ -549,7 +547,7 @@ const Index = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/register?role=ideator">
                 <Button 
-                  className="px-8 py-6 rounded-lg text-base font-medium text-white bg-emerald-600 hover:bg-emerald-500 transition-all duration-300"
+                  className="px-8 py-6 rounded-lg text-base font-medium text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:opacity-90 transition-all duration-300"
                   aria-label="Submit your business idea to Kick Inn"
                 >
                   Submit an Idea
@@ -576,7 +574,7 @@ const Index = () => {
               <Link to="/exits" className="flex items-center">
                 <Button 
                   variant="ghost"
-                  className="px-8 py-6 rounded-lg text-base font-medium text-emerald-300 hover:text-emerald-200 transition-all duration-300"
+                  className="px-8 py-6 rounded-lg text-base font-medium text-[#86b39c] hover:text-[#679f83] transition-all duration-300"
                   aria-label="Browse available acquisitions on Kick Inn"
                 >
                   Browse Acquisitions
