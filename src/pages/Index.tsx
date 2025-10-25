@@ -8,7 +8,8 @@ import FeatureCard from "@/components/FeatureCard";
 import RoleCard from "@/components/RoleCard";
 import ProcessStep from "@/components/ProcessStep";
 import StatCard from "@/components/StatCard";
-import { Twitter, Linkedin, Send, Zap, Users, TrendingUp, CheckCircle, DollarSign, MessageSquarePlus, Code, Target, Lightbulb, Wrench, Building2 } from "lucide-react";
+import ComparisonCard from "@/components/ComparisonCard";
+import { Twitter, Linkedin, Send, Zap, Users, TrendingUp, CheckCircle, DollarSign, MessageSquarePlus, Code, Target, Lightbulb, Wrench, Building2, UserX, Lock, Coins, Cpu } from "lucide-react";
 
 const Index = () => {
   return (
@@ -448,7 +449,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Section 5: Stats */}
+      {/* Section 5: Why Kick Inn Beats Traditional VC */}
       <section 
         className="px-8 md:px-16 py-24"
         style={{ 
@@ -456,16 +457,61 @@ const Index = () => {
         }}
       >
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-20">
-            Why Kick Inn?
-          </h2>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
+              Why Kick Inn Beats Traditional VC
+            </h2>
+          </motion.div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-            <StatCard number="12-36" label="Month Exits" />
-            <StatCard number="78%" label="MVP Success Rate" />
-            <StatCard number="10%" label="Ideator Share" />
-            <StatCard number="$250K" label="Avg Funding" />
+          <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+            <ComparisonCard
+              title="No Founder Bottleneck"
+              oldWay="Need charismatic founder + pitch deck"
+              kickInnWay="AI validates problem, Executors build"
+              oldIcon={UserX}
+              newIcon={Users}
+              index={0}
+            />
+            <ComparisonCard
+              title="Liquid Equity Day 1"
+              oldWay="7-10 year lock-up, illiquid"
+              kickInnWay="Tokenized equity, exit in 12-36mo"
+              oldIcon={Lock}
+              newIcon={Coins}
+              index={1}
+            />
+            <ComparisonCard
+              title="Smart Contract Governance"
+              oldWay="Board politics, manual oversight"
+              kickInnWay="Automated milestones, AI-verified"
+              oldIcon={Users}
+              newIcon={Cpu}
+              index={2}
+            />
           </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <Link to="/about">
+              <Button 
+                size="lg"
+                variant="outline"
+                className="text-base font-medium px-8 py-6 text-white border-2 border-white/30 hover:bg-white/10"
+              >
+                See the Difference
+              </Button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 
