@@ -43,6 +43,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import AdminUsers from "./pages/AdminUsers";
 import AdminVentures from "./pages/AdminVentures";
 import InvestorKYC from "./pages/InvestorKYC";
+import BuyerAcquisitionDetail from "./pages/BuyerAcquisitionDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -94,6 +95,7 @@ const App = () => (
           <Route path="/exits/:id/offer" element={<MakeOffer />} />
           <Route path="/buyer/offers" element={<ComingSoon />} />
           <Route path="/buyer/acquired" element={<ComingSoon />} />
+          <Route path="/buyer/acquisition/:id" element={<BuyerAcquisitionDetail />} />
           
           {/* Notifications & Settings */}
           <Route path="/notifications" element={<Notifications />} />
