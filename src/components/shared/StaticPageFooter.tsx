@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import kickInnLogo from "@/assets/kick-inn-logo.png";
 
 const StaticPageFooter = () => {
   const footerSections = [
@@ -33,7 +34,11 @@ const StaticPageFooter = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand Column */}
           <div>
-            <h3 className="text-xl font-bold text-white mb-2">KICK INN</h3>
+            <img 
+              src={kickInnLogo} 
+              alt="Kick Inn Logo" 
+              className="h-8 w-auto mb-3"
+            />
             <p className="text-sm mb-3" style={{ color: 'rgba(255, 255, 255, 0.7)' }}>
               Where Ideas Kick In
             </p>

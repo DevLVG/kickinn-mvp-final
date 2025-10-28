@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import kickInnLogo from "@/assets/kick-inn-logo.png";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,12 +33,12 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <h2 
-              className="text-2xl md:text-3xl font-bold text-white tracking-wider hover:opacity-90 transition-opacity" 
-              style={{ textShadow: '0 0 30px rgba(103, 159, 131, 0.5)' }}
-            >
-              KICK INN
-            </h2>
+            <img 
+              src={kickInnLogo} 
+              alt="Kick Inn Logo" 
+              className="h-8 md:h-10 w-auto hover:opacity-90 transition-opacity"
+              style={{ filter: 'drop-shadow(0 0 20px rgba(103, 159, 131, 0.4))' }}
+            />
           </Link>
 
           {/* Center Menu */}

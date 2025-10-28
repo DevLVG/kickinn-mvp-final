@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import kickInnLogo from "@/assets/kick-inn-logo.png";
 
 const StaticPageHeader = () => {
   const location = useLocation();
@@ -17,8 +18,12 @@ const StaticPageHeader = () => {
     <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-10 py-5 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="text-2xl font-bold" style={{ color: '#194a61' }}>
-          KICK INN
+        <Link to="/" className="flex items-center">
+          <img 
+            src={kickInnLogo} 
+            alt="Kick Inn Logo" 
+            className="h-8 md:h-10 w-auto hover:opacity-90 transition-opacity"
+          />
         </Link>
 
         {/* Navigation */}

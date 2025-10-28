@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import RoleSwitcher from "./RoleSwitcher";
 import NotificationBell from "./NotificationBell";
 import ProfileMenu from "./ProfileMenu";
+import kickInnLogo from "@/assets/kick-inn-logo.png";
 
 interface DashboardHeaderProps {
   activeRole: 'ideator' | 'executor' | 'investor' | 'buyer';
@@ -25,9 +26,11 @@ const DashboardHeader = ({ activeRole, userRoles, onRoleChange, user }: Dashboar
     >
       {/* Left: Logo */}
       <Link to="/dashboard" className="flex items-center">
-        <h2 className="text-xl font-bold text-primary-dark tracking-wider hover:opacity-90 transition-opacity">
-          KICK INN
-        </h2>
+        <img 
+          src={kickInnLogo} 
+          alt="Kick Inn Logo" 
+          className="h-8 w-auto hover:opacity-90 transition-opacity"
+        />
       </Link>
 
       {/* Right: Role Switcher, Notifications, Profile */}
