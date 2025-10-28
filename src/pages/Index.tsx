@@ -223,7 +223,7 @@ const Index = () => {
       {/* Section 2: Why Kick Inn Beats Traditional VC */}
       <section 
         className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32"
-        style={{ background: '#f5f7f8' }}
+        style={{ background: 'linear-gradient(135deg, #0f2b38 0%, #194a61 50%, #0f2b38 100%)' }}
       >
         <div className="max-w-7xl mx-auto">
           <motion.div
@@ -232,7 +232,7 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-12 md:mb-20"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4" style={{ color: '#194a61' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
               Why Kick Inn Beats Traditional VC
             </h2>
           </motion.div>
@@ -286,7 +286,7 @@ const Index = () => {
       {/* Section 3: How It Works */}
       <section 
         className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden"
-        style={{ background: 'rgba(25, 74, 97, 0.5)' }}
+        style={{ background: '#0a1f2b' }}
         aria-label="Platform process timeline"
       >
         {/* Subtle grid pattern */}
@@ -429,7 +429,7 @@ const Index = () => {
       {/* Section 4: Join Our Marketplace */}
       <section 
         className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden"
-        style={{ background: 'rgba(15, 43, 56, 0.6)' }}
+        style={{ background: 'linear-gradient(135deg, #0f2b38 0%, #194a61 50%, #0f2b38 100%)' }}
       >
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
@@ -488,7 +488,7 @@ const Index = () => {
       {/* Section 5: FAQ */}
       <section 
         className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden"
-        style={{ background: 'rgba(103, 159, 131, 0.08)' }}
+        style={{ background: '#0a1f2b' }}
       >
         <div className="max-w-4xl mx-auto relative z-10">
           <motion.div
@@ -497,10 +497,10 @@ const Index = () => {
             viewport={{ once: true }}
             className="text-center mb-12 md:mb-20"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6" style={{ color: '#194a61' }}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 text-white">
               Frequently Asked Questions
             </h2>
-            <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto" style={{ color: '#194a61', opacity: 0.8 }}>
+            <p className="text-base md:text-lg leading-relaxed max-w-2xl mx-auto text-white/80">
               Everything you need to know about turning your idea into a funded venture
             </p>
           </motion.div>
@@ -537,20 +537,20 @@ const Index = () => {
 
       {/* Section 6: CTA Final */}
       <section 
-        className="px-4 md:px-8 lg:px-16 py-16 lg:py-24 border-t border-gray-200"
-        style={{ background: 'rgba(103, 159, 131, 0.12)' }}
+        className="px-4 md:px-8 lg:px-16 py-16 lg:py-24 border-t border-white/10"
+        style={{ background: 'linear-gradient(135deg, #0f2b38 0%, #194a61 50%, #0f2b38 100%)' }}
       >
         <div className="max-w-7xl mx-auto">
           <div 
             className="max-w-[900px] mx-auto rounded-2xl md:rounded-3xl p-8 md:p-12 lg:p-20 bg-white/5 backdrop-blur-md border border-[#679f83]/20"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-center mb-4 md:mb-6 leading-tight" style={{ color: '#194a61' }}>
+            <h2 className="text-3xl lg:text-4xl font-bold text-center mb-4 md:mb-6 leading-tight text-white">
               Ready to turn ideas into ventures?
             </h2>
-            <p className="text-base md:text-lg text-center mb-6 leading-relaxed" style={{ color: '#194a61', opacity: 0.85 }}>
+            <p className="text-base md:text-lg text-center mb-6 leading-relaxed text-white/85">
               Join Kick Inn today and start your journey from idea to successful venture.
             </p>
-            <p className="text-sm text-center mb-8 md:mb-10" style={{ color: '#679f83' }}>
+            <p className="text-sm text-center mb-8 md:mb-10 text-[#86efac]">
               <strong>Limited Time:</strong> First 100 ideators get free AI validation (worth $499)
             </p>
             
@@ -565,10 +565,10 @@ const Index = () => {
               </Link>
               <Link to="/register?role=executor" className="w-full md:w-auto">
                 <Button 
-                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:-translate-y-0.5 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   style={{ 
-                    color: '#194a61',
-                    borderColor: '#194a61',
+                    color: '#ffffff',
+                    borderColor: '#ffffff',
                     background: 'transparent'
                   }}
                   aria-label="Join Kick Inn as an Executor to build MVPs"
@@ -578,10 +578,10 @@ const Index = () => {
               </Link>
               <Link to="/register?role=investor" className="w-full md:w-auto">
                 <Button 
-                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:-translate-y-0.5 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   style={{ 
-                    color: '#194a61',
-                    borderColor: '#194a61',
+                    color: '#ffffff',
+                    borderColor: '#ffffff',
                     background: 'transparent'
                   }}
                   aria-label="Explore investment deals on Kick Inn"

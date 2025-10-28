@@ -20,18 +20,17 @@ const FAQItem = ({ question, answer, index }: FAQItemProps) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       className="py-4"
-      style={{ borderBottom: '1px solid rgba(25, 74, 97, 0.2)' }}
+      style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between text-left hover:bg-gray-50 hover:text-green-600 transition-colors rounded-lg px-4 py-2"
+        className="w-full flex items-center justify-between text-left hover:bg-white/5 transition-colors rounded-lg px-4 py-2 text-white"
         aria-expanded={isOpen}
         aria-controls={contentId}
         role="button"
         id={faqId}
-        style={{ color: '#194a61' }}
       >
-        <h3 className="text-lg font-semibold pr-4 md:pr-8">{question}</h3>
+        <h3 className="text-lg font-semibold pr-4 md:pr-8 hover:text-[#86efac] transition-colors">{question}</h3>
         <ChevronDown
           className={`w-6 h-6 flex-shrink-0 transition-transform duration-300 ${
             isOpen ? "rotate-180" : ""
@@ -51,7 +50,7 @@ const FAQItem = ({ question, answer, index }: FAQItemProps) => {
         role="region"
         aria-labelledby={faqId}
       >
-        <p className="pb-4 md:pb-6 pt-2 leading-relaxed text-base" style={{ color: '#194a61', opacity: 0.85 }}>{answer}</p>
+        <p className="pb-4 md:pb-6 pt-2 leading-relaxed text-base text-white/80">{answer}</p>
       </motion.div>
     </motion.div>
   );
