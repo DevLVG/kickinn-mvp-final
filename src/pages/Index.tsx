@@ -174,48 +174,16 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Social Proof Bar */}
+      {/* Statistics Section */}
       <section 
-        className="px-4 md:px-8 lg:px-16 py-8 md:py-12"
-        style={{ background: 'rgba(15, 43, 56, 0.8)' }}
+        className="px-4 md:px-8 lg:px-16 py-12 lg:py-16 border-b border-white/5"
+        style={{ background: 'linear-gradient(135deg, #0f2b38 0%, #194a61 50%, #0f2b38 100%)' }}
       >
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="flex flex-col items-center text-center"
-            >
-              <CheckCircle className="h-10 w-10 text-[#10b981] mb-3" />
-              <div className="text-3xl font-bold mb-1" style={{ color: '#ffffff' }}>2,400+</div>
-              <div style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Ideas Validated</div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="flex flex-col items-center text-center"
-            >
-              <DollarSign className="h-10 w-10 text-[#679f83] mb-3" />
-              <div className="text-3xl font-bold mb-1" style={{ color: '#ffffff' }}>$12M+</div>
-              <div style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Funded</div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="flex flex-col items-center text-center"
-            >
-              <TrendingUp className="h-10 w-10 text-[#679f83] mb-3" />
-              <div className="text-3xl font-bold mb-1" style={{ color: '#ffffff' }}>180</div>
-              <div style={{ color: 'rgba(255, 255, 255, 0.85)' }}>Exits Completed</div>
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
+            <StatCard number="2,400+" label="Ideas Validated" />
+            <StatCard number="$12M+" label="Total Funded" />
+            <StatCard number="180" label="Exits Completed" />
           </div>
         </div>
       </section>
@@ -237,7 +205,7 @@ const Index = () => {
             </h2>
           </motion.div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-8 md:mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-12">
             <ComparisonCard
               title="No Founder Bottleneck"
               oldWay="Need charismatic founder + pitch deck"
@@ -285,7 +253,7 @@ const Index = () => {
 
       {/* Section 3: How It Works */}
       <section 
-        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden"
+        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden border-b border-white/5"
         style={{ background: '#0a1f2b' }}
         aria-label="Platform process timeline"
       >
@@ -428,7 +396,7 @@ const Index = () => {
 
       {/* Section 4: Join Our Marketplace */}
       <section 
-        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden"
+        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden border-b border-white/5"
         style={{ background: 'linear-gradient(135deg, #0f2b38 0%, #194a61 50%, #0f2b38 100%)' }}
       >
         <div className="max-w-7xl mx-auto relative z-10">
@@ -487,7 +455,7 @@ const Index = () => {
 
       {/* Section 5: FAQ */}
       <section 
-        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden"
+        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32 relative overflow-hidden border-b border-white/5"
         style={{ background: '#0a1f2b' }}
       >
         <div className="max-w-4xl mx-auto relative z-10">
@@ -505,7 +473,7 @@ const Index = () => {
             </p>
           </motion.div>
           
-          <div className="space-y-4">
+          <div className="space-y-6">
             <FAQItem
               question="Do I need to be technical to submit an idea?"
               answer="No technical skills required. Our AI validates your concept and matches it with experienced Executors who handle all the building. You just need a real problem worth solving."
@@ -537,7 +505,7 @@ const Index = () => {
 
       {/* Section 6: CTA Final */}
       <section 
-        className="px-4 md:px-8 lg:px-16 py-16 lg:py-24 border-t border-white/10"
+        className="px-4 md:px-8 lg:px-16 py-16 lg:py-24 border-t border-white/5"
         style={{ background: 'linear-gradient(135deg, #0f2b38 0%, #194a61 50%, #0f2b38 100%)' }}
       >
         <div className="max-w-7xl mx-auto">
@@ -551,52 +519,33 @@ const Index = () => {
               Join Kick Inn today and start your journey from idea to successful venture.
             </p>
             <p className="text-sm text-center mb-8 md:mb-10 text-[#86efac]">
-              <strong>Limited Time:</strong> First 100 ideators get free AI validation (worth $499)
+              <strong>Limited spots for December 2024:</strong> First 100 ideators get free AI validation (worth $499)
             </p>
             
             <div className="flex flex-col md:flex-row flex-wrap justify-center gap-3 md:gap-4">
               <Link to="/register?role=ideator" className="w-full md:w-auto">
                 <Button 
-                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:bg-[#5a8d73] hover:shadow-lg transform hover:scale-105 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                  size="lg"
+                  className="w-full md:w-auto px-10 py-6 rounded-lg text-lg font-bold text-white transition-all duration-300 hover:shadow-2xl hover:shadow-[rgba(103,159,131,0.5)] hover:scale-105 focus:ring-2 focus:ring-offset-2 focus:ring-[#679f83]"
+                  style={{
+                    background: 'linear-gradient(135deg, #679f83, #4ade80)'
+                  }}
                   aria-label="Submit your business idea to Kick Inn"
                 >
-                  Submit an Idea
+                  Submit an Idea Now
                 </Button>
               </Link>
               <Link to="/register?role=executor" className="w-full md:w-auto">
                 <Button 
-                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                  style={{ 
-                    color: '#ffffff',
-                    borderColor: '#ffffff',
-                    background: 'transparent'
+                  size="lg"
+                  variant="outline"
+                  className="w-full md:w-auto px-8 py-6 rounded-lg text-base font-medium transition-all duration-300 bg-white/5 border text-white/80 hover:bg-white/10 hover:text-white focus:ring-2 focus:ring-offset-2 focus:ring-[#679f83]"
+                  style={{
+                    borderColor: 'rgba(103, 159, 131, 0.4)'
                   }}
                   aria-label="Join Kick Inn as an Executor to build MVPs"
                 >
                   Join as Executor
-                </Button>
-              </Link>
-              <Link to="/register?role=investor" className="w-full md:w-auto">
-                <Button 
-                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                  style={{ 
-                    color: '#ffffff',
-                    borderColor: '#ffffff',
-                    background: 'transparent'
-                  }}
-                  aria-label="Explore investment deals on Kick Inn"
-                >
-                  Explore Deals
-                </Button>
-              </Link>
-              <Link to="/exits" className="w-full md:w-auto flex items-center">
-                <Button 
-                  variant="ghost"
-                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium hover:-translate-y-0.5 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                  style={{ color: '#679f83' }}
-                  aria-label="Browse available acquisitions on Kick Inn"
-                >
-                  Browse Acquisitions
                 </Button>
               </Link>
             </div>

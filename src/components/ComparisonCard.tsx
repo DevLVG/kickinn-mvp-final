@@ -31,9 +31,9 @@ const ComparisonCard = ({
       <h3 className="text-lg md:text-xl font-bold mb-6 text-center text-white">{title}</h3>
 
       {/* Two-column comparison */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
         {/* Traditional VC - Left */}
-        <div className="space-y-3 bg-white/5 rounded-lg p-4 border border-red-500/20">
+        <div className="space-y-3 bg-red-950/30 rounded-lg p-4 border border-red-500/30">
           <div className="flex items-center gap-2 mb-3 text-red-400">
             <X className="w-5 h-5 flex-shrink-0" aria-label="Not available" />
             <span className="text-sm font-semibold">Traditional VC</span>
@@ -51,10 +51,10 @@ const ComparisonCard = ({
         </div>
 
         {/* Kick Inn - Right */}
-        <div className="space-y-3 bg-white/5 rounded-lg p-4 border border-[#679f83]/30">
+        <div className="space-y-3 bg-emerald-950/30 rounded-lg p-4 border border-[#679f83]/40">
           <div className="flex items-center gap-2 mb-3 text-[#86efac]">
             <Check className="w-5 h-5 flex-shrink-0" aria-label="Available" />
-            <span className="text-sm font-semibold">Kick Inn</span>
+            <span className="text-sm font-semibold">Kick Inn Advantage</span>
           </div>
           
           <div className="flex items-start gap-3">

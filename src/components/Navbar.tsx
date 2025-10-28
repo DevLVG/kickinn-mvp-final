@@ -29,7 +29,7 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
@@ -45,19 +45,19 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-8">
             <Link 
               to="/how-it-works" 
-              className="text-white/80 hover:text-white transition-colors text-sm font-medium"
+              className="text-slate-50 hover:text-[#86efac] transition-colors text-sm font-medium"
             >
               How It Works
             </Link>
             <Link 
               to="/about" 
-              className="text-white/80 hover:text-white transition-colors text-sm font-medium"
+              className="text-slate-50 hover:text-[#86efac] transition-colors text-sm font-medium"
             >
               Success Stories
             </Link>
             <Link 
               to="/pricing" 
-              className="text-white/80 hover:text-white transition-colors text-sm font-medium"
+              className="text-slate-50 hover:text-[#86efac] transition-colors text-sm font-medium"
             >
               Pricing
             </Link>
@@ -75,10 +75,9 @@ const Navbar = () => {
             </Link>
             <Link to="/register">
               <Button 
-                className="text-sm font-medium px-6 text-white"
+                className="px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[rgba(103,159,131,0.4)] focus:ring-2 focus:ring-offset-2 focus:ring-[#679f83]"
                 style={{ 
-                  background: 'linear-gradient(to right, #679f83, #23698a)',
-                  boxShadow: '0 4px 12px rgba(103, 159, 131, 0.3)'
+                  background: 'linear-gradient(135deg, #679f83, #4ade80)'
                 }}
               >
                 Start Free

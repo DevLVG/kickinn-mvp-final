@@ -42,14 +42,14 @@ const RoleCard = ({
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
       whileHover={{ y: -8, scale: 1.02 }}
-      className="group relative bg-white/5 backdrop-blur-md border border-[#679f83]/20 rounded-2xl p-6 lg:p-8 hover:border-[#679f83]/50 hover:shadow-lg transition-all duration-300"
+      className="group relative bg-white/5 backdrop-blur-md border border-[#679f83]/20 rounded-2xl p-6 lg:p-8 hover:border-[#679f83]/50 hover:shadow-lg hover:shadow-[rgba(103,159,131,0.3)] transition-all duration-300"
       aria-label={getRoleAriaLabel()}
     >
       {/* Member Count Badge - Top Right */}
       <div className="absolute top-4 right-4 flex gap-2">
         <Badge 
           variant="secondary" 
-          className="font-semibold text-sm px-3 py-1 rounded-full"
+          className="font-semibold px-3 py-1 text-sm rounded-full"
           style={{ background: '#ffffff', color: '#194a61' }}
         >
           {memberCount}
@@ -85,7 +85,10 @@ const RoleCard = ({
       {/* CTA Button */}
       <Link to={ctaLink}>
         <Button 
-          className="w-full text-white font-medium transition-all duration-300 group-hover:scale-105 hover:-translate-y-0.5 bg-gradient-to-r from-[#679f83] to-[#23698a] focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          className="w-full px-6 py-3 rounded-lg font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[rgba(13,148,136,0.4)] focus:ring-2 focus:ring-offset-2 focus:ring-[#0d9488]"
+          style={{
+            background: 'linear-gradient(135deg, #0d9488, #14b8a6)'
+          }}
         >
           {ctaText}
         </Button>

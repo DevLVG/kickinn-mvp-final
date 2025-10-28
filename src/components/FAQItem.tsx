@@ -24,7 +24,13 @@ const FAQItem = ({ question, answer, index }: FAQItemProps) => {
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between text-left hover:bg-white/5 transition-colors rounded-lg px-4 py-2 text-white"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            setIsOpen(!isOpen);
+          }
+        }}
+        className="w-full flex items-center justify-between text-left hover:bg-slate-700/50 transition-colors rounded-lg px-4 py-3 text-white cursor-pointer"
         aria-expanded={isOpen}
         aria-controls={contentId}
         role="button"
