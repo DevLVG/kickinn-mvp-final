@@ -25,21 +25,31 @@ const RoleCard = ({
   ctaLink,
   index 
 }: RoleCardProps) => {
+  const getRoleAriaLabel = () => {
+    const roleDescriptions: Record<string, string> = {
+      'Ideator': 'Ideator role: Submit ideas and earn equity tokens',
+      'Executor': 'Executor role: Build MVPs and get paid on-chain',
+      'Investor': 'Investor role: Fund ventures with early exit opportunities',
+      'Buyer': 'Buyer role: Acquire revenue-ready businesses'
+    };
+    return roleDescriptions[title] || `${title} role with ${memberCount}`;
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1 }}
-      whileHover={{ y: -8 }}
-      className="group relative bg-white/5 backdrop-blur-md border border-[#679f83]/20 rounded-2xl p-6 md:p-8 hover:border-[#679f83]/50 hover:shadow-[0_8px_30px_rgba(103,159,131,0.3)] transition-all duration-300"
-      aria-label={`${title} role with ${memberCount}`}
+      whileHover={{ y: -8, scale: 1.02 }}
+      className="group relative bg-white/5 backdrop-blur-md border border-[#679f83]/20 rounded-2xl p-6 lg:p-8 hover:border-[#679f83]/50 hover:shadow-lg transition-all duration-300"
+      aria-label={getRoleAriaLabel()}
     >
       {/* Member Count Badge - Top Right */}
       <div className="absolute top-4 right-4 flex gap-2">
         <Badge 
           variant="secondary" 
-          className="font-bold text-xs px-3 py-1"
+          className="font-semibold text-sm px-3 py-1 rounded-full"
           style={{ background: '#ffffff', color: '#194a61' }}
         >
           {memberCount}
@@ -67,12 +77,15 @@ const RoleCard = ({
       <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{title}</h3>
 
       {/* Description */}
-      <p className="text-white/85 text-sm md:text-base mb-6 line-clamp-1">{description}</p>
+      <p className="text-white/85 text-sm md:text-base mb-4 line-clamp-1">{description}</p>
+      
+      {/* Member count info */}
+      <p className="text-xs text-white/60 mb-6">as of Dec 2024</p>
 
       {/* CTA Button */}
       <Link to={ctaLink}>
         <Button 
-          className="w-full text-white font-medium transition-all duration-300 group-hover:scale-105 hover:-translate-y-0.5 bg-gradient-to-r from-[#679f83] to-[#23698a]"
+          className="w-full text-white font-medium transition-all duration-300 group-hover:scale-105 hover:-translate-y-0.5 bg-gradient-to-r from-[#679f83] to-[#23698a] focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
         >
           {ctaText}
         </Button>

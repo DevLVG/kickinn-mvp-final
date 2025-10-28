@@ -19,7 +19,7 @@ const Index = () => {
 
       {/* Section 1: Hero */}
       <section 
-        className="min-h-screen px-4 md:px-8 lg:px-16 pt-24 md:pt-32 pb-16 md:pb-20 relative overflow-hidden"
+        className="min-h-screen px-4 md:px-8 lg:px-16 py-20 lg:py-32 relative overflow-hidden"
         style={{
           background: 'linear-gradient(135deg, #0f2b38 0%, #194a61 50%, #0f2b38 100%)',
         }}
@@ -54,7 +54,7 @@ const Index = () => {
           }}
         />
         
-        <div className="max-w-7xl mx-auto relative z-10">
+        <div className="max-w-7xl mx-auto relative z-10 container">
           {/* Hero Grid - Two Column Layout */}
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Left Column */}
@@ -63,7 +63,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-4xl md:text-5xl lg:text-[56px] font-bold text-white leading-tight"
+                className="text-4xl lg:text-6xl font-bold text-white leading-tight"
               >
                 Turn Ideas Into Funded Ventures. <span className="bg-gradient-to-r from-[#679f83] to-[#86b39c] bg-clip-text text-transparent">No Founder Needed.</span>
               </motion.h1>
@@ -72,7 +72,7 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-base md:text-lg leading-relaxed max-w-xl"
+                className="text-xl leading-relaxed max-w-xl"
                 style={{ color: 'rgba(255, 255, 255, 0.9)' }}
               >
                 AI validates your concept. Executors build the MVP. Investors fund it. You keep equity.
@@ -119,7 +119,7 @@ const Index = () => {
                   >
                     <Button 
                       size="lg"
-                      className="w-full md:w-auto text-sm md:text-base font-medium px-8 py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:-translate-y-0.5 transition-all"
+                      className="w-full md:w-auto text-sm md:text-base font-medium px-8 py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:bg-[#5a8d73] hover:scale-105 transform transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                       style={{ 
                         boxShadow: '0 8px 24px rgba(103, 159, 131, 0.3)'
                       }}
@@ -137,7 +137,7 @@ const Index = () => {
                     <Button 
                       size="lg"
                       variant="ghost"
-                      className="w-full md:w-auto text-sm md:text-base font-medium px-8 py-6 text-white border-2 border-white/30 hover:bg-white/10 hover:-translate-y-0.5 transition-all"
+                      className="w-full md:w-auto text-sm md:text-base font-medium px-8 py-6 text-white border-2 border-white/30 hover:bg-white/10 hover:-translate-y-0.5 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                     >
                       I'm an Executor
                     </Button>
@@ -145,19 +145,24 @@ const Index = () => {
                 </Link>
               </motion.div>
 
-              {/* Trust badges */}
+              {/* Trust badges & Social Proof */}
               <motion.div 
-                className="flex flex-wrap items-center gap-6 pt-6 opacity-70"
+                className="pt-6 space-y-3"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 0.7 }}
+                animate={{ opacity: 1 }}
                 transition={{ delay: 0.9 }}
               >
-                <Badge variant="outline" className="text-white border-white/30 px-3 py-1">
-                  Backed by Y Combinator
-                </Badge>
-                <Badge variant="outline" className="text-white border-white/30 px-3 py-1">
-                  Featured in TechCrunch
-                </Badge>
+                <div className="flex flex-wrap items-center gap-4">
+                  <Badge variant="outline" className="text-white border-white/30 px-3 py-1">
+                    Backed by Y Combinator
+                  </Badge>
+                  <Badge variant="outline" className="text-white border-white/30 px-3 py-1">
+                    Featured in TechCrunch
+                  </Badge>
+                </div>
+                <p className="text-sm text-white/60">
+                  Join 10,000+ innovators building the future of venture creation
+                </p>
               </motion.div>
             </div>
             
@@ -232,7 +237,7 @@ const Index = () => {
             </h2>
           </motion.div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-8 md:mb-12">
             <ComparisonCard
               title="No Founder Bottleneck"
               oldWay="Need charismatic founder + pitch deck"
@@ -269,7 +274,7 @@ const Index = () => {
             <Link to="/about">
               <Button 
                 size="lg"
-                className="text-base font-medium px-8 py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:-translate-y-0.5 transition-all"
+                className="text-base font-medium px-8 py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:bg-[#5a8d73] hover:shadow-md transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
                 See the Difference
               </Button>
@@ -311,7 +316,7 @@ const Index = () => {
           </motion.div>
           
           {/* Process Timeline - Desktop */}
-          <div className="hidden lg:flex gap-8 mb-12 md:mb-16 relative">
+          <div className="hidden lg:flex gap-8 lg:gap-12 mb-12 md:mb-16 relative">
             <ProcessStep
               icon={MessageSquarePlus}
               iconColor="#679f83"
@@ -348,7 +353,7 @@ const Index = () => {
           </div>
 
           {/* Process Timeline - Mobile/Tablet */}
-          <div className="lg:hidden space-y-6 md:space-y-8 mb-12 md:mb-16">
+          <div className="lg:hidden space-y-8 mb-12 md:mb-16">
             <ProcessStep
               icon={MessageSquarePlus}
               iconColor="#679f83"
@@ -397,7 +402,7 @@ const Index = () => {
             <Link to="/register?role=ideator" className="w-full md:w-auto">
               <Button 
                 size="lg"
-                className="w-full md:w-auto text-sm md:text-base font-medium px-6 md:px-8 py-5 md:py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:-translate-y-0.5 transition-all"
+                className="w-full md:w-auto text-sm md:text-base font-medium px-6 md:px-8 py-5 md:py-6 text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:bg-[#5a8d73] transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                 style={{ 
                   boxShadow: '0 8px 24px rgba(103, 159, 131, 0.3)'
                 }}
@@ -408,7 +413,7 @@ const Index = () => {
             <Link to="/register?role=executor" className="w-full md:w-auto">
               <Button 
                 size="lg"
-                className="w-full md:w-auto text-sm md:text-base font-medium px-6 md:px-8 py-5 md:py-6 text-white border-2 border-white bg-transparent hover:bg-white/10 hover:-translate-y-0.5 transition-all"
+                className="w-full md:w-auto text-sm md:text-base font-medium px-6 md:px-8 py-5 md:py-6 text-white border-2 border-white bg-transparent hover:bg-gray-50/10 transition-all duration-200 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               >
                 Browse Opportunities
               </Button>
@@ -438,7 +443,7 @@ const Index = () => {
             </h2>
           </motion.div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             <RoleCard
               icon={Lightbulb}
               title="Ideator"
@@ -500,7 +505,7 @@ const Index = () => {
             </p>
           </motion.div>
           
-          <div className="space-y-0">
+          <div className="space-y-4">
             <FAQItem
               question="Do I need to be technical to submit an idea?"
               answer="No technical skills required. Our AI validates your concept and matches it with experienced Executors who handle all the building. You just need a real problem worth solving."
@@ -532,24 +537,27 @@ const Index = () => {
 
       {/* Section 6: CTA Final */}
       <section 
-        className="px-4 md:px-8 lg:px-16 py-16 md:py-24 lg:py-32"
+        className="px-4 md:px-8 lg:px-16 py-16 lg:py-24 border-t border-gray-200"
         style={{ background: 'rgba(103, 159, 131, 0.12)' }}
       >
         <div className="max-w-7xl mx-auto">
           <div 
             className="max-w-[900px] mx-auto rounded-2xl md:rounded-3xl p-8 md:p-12 lg:p-20 bg-white/5 backdrop-blur-md border border-[#679f83]/20"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4 md:mb-6 leading-tight" style={{ color: '#194a61' }}>
+            <h2 className="text-3xl lg:text-4xl font-bold text-center mb-4 md:mb-6 leading-tight" style={{ color: '#194a61' }}>
               Ready to turn ideas into ventures?
             </h2>
-            <p className="text-base md:text-lg text-center mb-8 md:mb-10 leading-relaxed" style={{ color: '#194a61', opacity: 0.85 }}>
+            <p className="text-base md:text-lg text-center mb-6 leading-relaxed" style={{ color: '#194a61', opacity: 0.85 }}>
               Join Kick Inn today and start your journey from idea to successful venture.
+            </p>
+            <p className="text-sm text-center mb-8 md:mb-10" style={{ color: '#679f83' }}>
+              <strong>Limited Time:</strong> First 100 ideators get free AI validation (worth $499)
             </p>
             
             <div className="flex flex-col md:flex-row flex-wrap justify-center gap-3 md:gap-4">
               <Link to="/register?role=ideator" className="w-full md:w-auto">
                 <Button 
-                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium text-white bg-gradient-to-r from-[#679f83] to-[#23698a] hover:bg-[#5a8d73] hover:shadow-lg transform hover:scale-105 transition-all focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   aria-label="Submit your business idea to Kick Inn"
                 >
                   Submit an Idea
@@ -557,7 +565,7 @@ const Index = () => {
               </Link>
               <Link to="/register?role=executor" className="w-full md:w-auto">
                 <Button 
-                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:-translate-y-0.5 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   style={{ 
                     color: '#194a61',
                     borderColor: '#194a61',
@@ -570,7 +578,7 @@ const Index = () => {
               </Link>
               <Link to="/register?role=investor" className="w-full md:w-auto">
                 <Button 
-                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium border-2 hover:-translate-y-0.5 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   style={{ 
                     color: '#194a61',
                     borderColor: '#194a61',
@@ -584,7 +592,7 @@ const Index = () => {
               <Link to="/exits" className="w-full md:w-auto flex items-center">
                 <Button 
                   variant="ghost"
-                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium hover:-translate-y-0.5 transition-all duration-300"
+                  className="w-full md:w-auto px-6 md:px-8 py-5 md:py-6 rounded-lg text-sm md:text-base font-medium hover:-translate-y-0.5 transition-all duration-300 focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                   style={{ color: '#679f83' }}
                   aria-label="Browse available acquisitions on Kick Inn"
                 >

@@ -11,6 +11,16 @@ interface ProcessStepProps {
   isLast?: boolean;
 }
 
+const getStepAriaLabel = (title: string, index: number) => {
+  const labels = [
+    "Step 1: Submit your business idea for AI validation",
+    "Step 2: Vetted executors build your MVP prototype",
+    "Step 3: Investors fund your venture with transparent terms",
+    "Step 4: Exit through acquisition or secondary market"
+  ];
+  return labels[index] || `Process step: ${title}`;
+};
+
 const ProcessStep = ({ 
   icon: Icon, 
   iconColor, 
@@ -30,6 +40,7 @@ const ProcessStep = ({
         transition={{ delay: index * 0.15 }}
         whileHover={{ scale: 1.1 }}
         className="relative z-10 mb-6"
+        aria-label={getStepAriaLabel(title, index)}
       >
         <div 
           className="w-20 h-20 rounded-full flex items-center justify-center backdrop-blur-sm border-2"
@@ -41,8 +52,8 @@ const ProcessStep = ({
           <Icon className="w-10 h-10" style={{ color: iconColor }} />
         </div>
         <div 
-          className="absolute -top-2 -right-2 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
-          style={{ background: iconColor }}
+          className="absolute -top-2 -right-2 w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold p-2"
+          style={{ background: '#86efac', color: iconColor }}
         >
           {index + 1}
         </div>
